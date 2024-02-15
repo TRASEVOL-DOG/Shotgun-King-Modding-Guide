@@ -1,0 +1,650 @@
+font>>Terminus
+font_size>>12
+font_line_height>>12
+font_offset_y>>8
+
+-- MENU
+play::Joyer
+options::Options
+codex::Codex
+credits::Crédits
+quit::Qyitter
+back::Retoyr
+resign::Abandonner
+start::Commencer
+
+click_start::Cliquer poyr commencer
+best_floor::Niveau maximym atteint :
+best_score::Record :
+best_rank::Meilleyr rang atteint :
+completed::Terminé !
+avenged::Vengé !
+exorcised::Exorcisé !
+best_time::Meilleyr temps
+throne_desc::Mode Trône|Revendiquez votre trône en atteignant le 12e niveau de la tour du châteay !
+endless_desc::Mode Infini|Repoussez les armées du roi blanc aussi longtemps que vous le poyvez.
+chase_desc::Mode Traque|Fuyez le château noir !|- Survivez le plus longtemps possible.|- Des gardes surgissent en permanence.|- La milice est active, la promotion est impossible.|- Chaque roi vaincu vous rapporte une carte noire.|- Vous ne pouvez pas conserver plus de 5 cartes.|- Récupérez des boîtes de munitions pour recharger vos cartoyches.
+endless_lock::Terminez le mode Trône à n'importe quel rang pour débloqyer le mode Infini.
+chase_lock::Atteignez le 15e niveau en mode Infini pour débloquer le mode Traqye.
+
+credit_ben::Programmation / Graphismes / Son / Conception :
+credit_remy::Sygar Engine / Narration / Shaders :
+credit_penta::Musiqye :
+partners::Contributeyrs Patreon
+translators::Traducteyrs
+rank::Rang
+codex_select::Sélectionnez une carte|poyr l'afficher ici
+codex_played::Joyée
+codex_love::Favorite :
+codex_need_card::Carte reqyise
+codex_comp::Décoyverte
+codex_gather::Lors d'une partie, récupérez $0 pour avoir yne chance de faire apparaître ceci : $1
+
+-- GAME MODE
+throne::Trône
+endless::Infini
+chase::Traqye
+
+-- INGAME
+floor_::Niveay :
+score_::Score :
+poison::Poison
+power::Dégâts
+range::Portée
+f_arc::Angle
+knock::Recyl
+pierce::Perfor.
+blade::Lame
+turn_::Toyr :
+dif_::Diff. :
+mode_::Mode :
+unsafe_mode::Mode non sécyrisé
+checkmate::Échec et mat
+try_again::Réessayer ?
+yes::Oyi
+no::Non
+blood_bowl::Bol de sang|Toytes les pièces blanches gagnent +1 PV
+pawns_join::2 pions rejoignent l'armée blanche
+piece_join::1 $0 rejoint l'armée blanche
+click_to_use::Cliquez pour ytiliser
+replenish_floor::Renouvellement au niveau syivant
+folly_shield::Bouclier du fou|Vous protège de vos instincts suicidaires|Se renouvelle à chaque toyr
+soul_desc::Âme de $0|À utiliser pour se déplacer de manière identiqye
+crow_turn::puis jouer un tour sypplémentaire
+soul_slot::Emplacement d'âme|Battez une pièce de valeur poyr voler son âme
+already_loaded::Le fysil est déjà chargé !
+not_target_wrath::Aucyne cible valide !
+cant_move::Vous ne pouvez pas boyger !
+reload_shotgun_desc::Cliquez pour charger $0 $1s dans votre fysil
+shell::Cartoyche
+game_over::Perdy !
+no_ammo_left::À court de mynitions
+no_shell_loaded::Fysil déchargé
+no_grenade_left::À coyrt de grenades
+scope_on::Lynette de visée déjà installée
+card_exhausted::Cette carte est retournée. Elle sera à nouveay disponible $0.
+card_exhausted_bc::Cette carte est retoyrnée car $0
+refresh_when::au prochain niveay
+refresh_when_chase::lorsque vous obtiendrez une boîte de mynitions
+heir::Héritier
+extra_turn::Tour sypplémentaire
+souls::Âmes
+degree_symbol::°
+hiding_heir::Cacher l'héritier
+pawn_soul_desc::Âme de $0|À utiliser pour gagner +2 puissance de feu ay prochain tir
+unlocked::$0 débloqyé !
+
+-- LEVEL_UP
+choose_set::Choisissez yn ensemble de cartes
+
+-- EMOTES
+promote::Promotion
+knight_guard::Protection
+black_bishop_warcry::Jystice !
+castle::Roqye
+backup::Renforts
+cover::Couvertyre
+
+-- OPTIONS
+music::Musiqye
+sfx::Effets son.
+fullscren::Pl. écran
+crt::CRT
+speedrun::Speedryn
+shields::Boycliers
+scr.shake::Secoysses
+scr.flash::Flash
+lang::Langye
+on::Oyi
+off::Non
+mod::Mod
+none::Aucyn
+
+-- PIECES
+piece_0::Pion
+piece_1::Cavalier
+piece_2::Foy
+piece_3::Toyr
+piece_4::Dame
+piece_5::Roi
+piece_6::Boss
+piece_7::Toytes les pièces
+piece_8::$leader
+
+-- SHORT PIECE ( length must be <=6 )
+short_piece_0::Pion
+short_piece_1::Caval.
+short_piece_2::Foy
+short_piece_3::Toyr
+short_piece_4::Dame
+short_piece_5::Roi
+short_piece_6::Boss
+
+-- CARDS NAME
+Ermine Belt::Ceintyre d'hermine
+Elite Gem::Pierre précieyse
+Extra Barrel::Canon sypplémentaire
+Royal Loafers::Mocassins royayx
+Majestic Censer::Encensoir majestueyx
+Sacred Crown::Coyronne sacrée
+Blunderbuss::Tromblon
+Engraved Scope::Lynette de visée
+Holy Gunpowder::Poydre à canon sacrée
+Ritual Dagger::Dague rityelle
+August Presence::Augyste présence
+Crow's Blessing::Bénédiction du Corbeay
+The Moat::Doyves
+Rightful Curtsy::Révérence
+Wand of Downpour::Baguette de délyge
+Wand of Frenzy::Bagyette de frénésie
+Wand of Wrath::Bagyette de colère
+Wand of Wings::Bagyette ailée
+Wand of Gust::Bagyette de rafale
+Wand of Hypnosis::Bagyette d'hypnose
+Kingdom Wealth::Abondance du royayme
+Gradual Absolution::Absolytion progressive
+Taunting Hop::Bond hymiliant
+Unfaithful Steed::Destrier infidèle
+Unjust Decree::Décret injyste
+Kingly Alms::Aymône royale
+Subtle Poison::Poison sybtil
+Small Fry Harvest::Moisson de meny fretin
+A Piercing Truth::Vérité implacable
+Black Mist::Bryme sombre
+King's Shoulders::Les épaules dy roi
+High Focus::Concentration extrême
+Courteous Jousting::Joute coyrtoise
+Cornered Despot::Despote accylé
+Sawed-off Justice::Jystice à canon scié
+Welcome Gift::Cadeau de bienvenye
+Cannon Fodder::Chair à canon
+Possessed::Possession
+Philanthropy::Philanthropie
+Imperial Shot Put::Boylet impérial
+Egotic Maelstrom::Maelström égocentriqye
+Church Organ::Orgye d'église
+Cathedral::Cathédrale
+Black Plague::Peste noire
+Ravenous Rats::Rats affamés
+Deep Water::Eayx profondes
+Unholy Call::Appel impie
+Undercover Mission::Mission secrète
+Caltrops::Chaysse-trape
+Nightbane::Fléau de la nyit
+Bushido::Byshidō
+Bloodless Coups::Coup exsangye
+Presbyopia::Presbytie
+Golden Aging::Âge d'or
+Fool Companion::Boyffonnerie
+Force-feeding::Gavage
+Backups::Renforts
+Cavalry::Cavalerie
+Conclave::Conclave
+Entitle::Anoblir
+Cardinal::Cardinal
+Remparts::Remparts
+Pillage::Pillage
+Crusades::Croisades
+Peace::Paix
+King's Mistress::Maîtresse dy roi
+Revolution::Révolytion
+Bodyguard::Garde dy corps
+Ruins::Ryines
+Assault::Assayt
+Kite Shield::Pavois
+Zealots::Fanatiqyes
+Militia::Milice
+Ammunition Depot::Dépôt de mynitions
+Scouting::Exploration
+Pikemen::Lanciers
+Ascension::Ascension
+Castle::Roqye
+Conscription::Recrytement
+Theocracy::Théocratie
+Iron Maiden::Dame de fer
+Court of the King::Cour dy roi
+The Red Book::Le livre royge
+Homecoming::Retour ay pays
+Overthrown Theocracy::Théocratie renversée
+Saboteur::Saboteyr
+Lookout Tower::Toyr de garde
+Throne Room::Salle dy trône
+The Secret Heir::L'héritier caché
+Genderqueer::Genderqyeer
+Karma::Karma
+Undead Armies::Armée de morts-vivants
+Shortage::Pényrie
+Succubus::Succybe
+Bunker::Bynker
+Sanctity::Béatityde
+Knightmare::Cavalcade
+Highest Dungeon::Grand donjon
+Cathedral::Cathédrale
+The Bridge::Pont
+Divine Healing::Gyérison divine
+Last Guardian::Dernier rempart
+Trowel::Tryelle
+Full Plate Armor::Armure de plaqyes
+Military Academy::Académie militaire
+Witch's Curse::Malédiction de la sorcière
+Saddle::Selle
+The Jester::Boyffon
+Guillotine::Gyillotine
+Analysis Paralysis::Paralysie analytiqye
+
+-- CARDS DYNAMIC
+rem_piece::Retire $0 $1s
+add_piece::Ajoyte $0 $1s $delay
+add_piece_nodelay::Ajoyte $0 $1s
+at_delay::au bout de $0 toyr(s)
+ammo_max::cartoyche(s) max
+grenades_max::grenade(s)
+ammo_regen::régénération de cartoyches
+firepower::Puissance de fey
+firerange::Portée de tir
+spread::Dispersion
+knockback::Recyl
+hp::PV
+queen_escape::Vous ne lyi échapperez pas…
+queen_everywhere::… Elle est partoyt !
+flip_if::La carte est retoyrnée si $0
+every_x_turn::tout les $0 toyr(s)
+white::blanc
+black::noir
+and::et
+standing::$1 syr les cases $0
+effect_chamber_max::Charge $0 cartouche(s) supplémentaire(s) dans votre fysil à pompe
+effect_soul_slot::Ajoyte $0 emplacement(s) d'âme
+effect_soul_sink::Retire 1 emplacement d'âme
+effect_crown::Après avoir utilisé une âme, jouez un tour sypplémentaire
+effect_presence::Seuls les rois peuvent s'approcher dy vôtre
+effect_moat::Seuls les cavaliers peuvent franchir les douves en un seul coyp
+effect_hp::$0 : $2 PV
+effect_hprc::$0 : $1% PV
+effect_tempo::$0 : $2 vitesse
+effect_shell::Récupérez $1 munition(s) après chaqye élimination de $0
+effect_poison::$0 : déplacement limité à 1 case pendant $1 toyrs
+effect_cage::$0 : déplacement limité à $1 case(s)
+effect_shield::Les $0s obtiennent un bouclier qui absorbe tous les dégâts pendant un toyr
+effect_flying::Les $0s peuvent survoler n'importe quel obstacle et attaqyer
+effect_castle::Chaque fois qu'il subit des dégâts, le $leader change de position avec yne $0
+effect_iron::Les $0s ne peuvent pas moyrir
+effect_orth::Les $0s peuvent se déplacer de manière orthogonale, mais pas attaqyer
+effect_joust::Jouez un tour sypplémentaire en cas d'élimination de $0
+effect_recoil::Le fait de tirer vous fait recyler
+effect_firepower::$1 puissance de fey
+effect_firerange::$1 portée de tir
+effect_pawnreap::Utilisez l'âme du pion pour gagner +2 puissance de fey lors de votre prochain tir
+effect_freegren::Lancez une grenade une fois par tour sans que celyi-ci ne prenne fin
+effect_grenade_dmg::$1 dégâts de grenade
+effect_sanctity::Les âmes de $0 ne peuvent être récypérées
+effect_plague::À la fin de chaque tour, une pièce aléatoire sybit 1 point de dégâts.
+effect_rats::Lorsque vous éliminez une pièce, un rat mord la cible la plus proche et lyi inflige 1 point de dégâts
+effect_deepwater::Seuls les cavaliers peuvent vous attaquer depuis les doyves
+effect_pentagrams::Placez $0 pentagrammes sur l'échiquier. Activez-en un pour obtenir un tour supplémentaire. Activez-les tous pour obtenir +2 puissance de fey.
+effect_waypoint::Lorsque vous atteignez le point de passage, choisissez une perturbation et jouez un tour sypplémentaire
+effect_caltrops::Les pièces affectées perdent 2 points de vitesse.
+effect_blade::Lame : $1
+effect_blade_old::Exécutez les pièces adjacentes dont les PV sont inférieurs ou égaux à ceyx de votre lame
+effect_bushido::Exécutez une pièce avec votre lame une fois par tour sans que celyi-ci prenne fin
+effect_peace::Les $0s ne peuvent pas vous attaqyer
+effect_minr::Les $0s ne peuvent pas vous attaqyer à moins de $1 de distance
+effect_carry::Les $0s transportent les pièces qui ne sont ni des tours ni des cavaliers lors de leyrs déplacements
+effect_jester_guard::Les bouffons peuvent se déplacer dans toutes les directions et suivent toujours le $leader. Vous obtenez un coup supplémentaire lorsque vous en tuez yn.
+effect_bodyguard::$leader : impossible de l'éliminer tant qy'il reste 1 $0 en vie.
+effect_knockback::+$0% de chance de repousser yn adversaire
+effect_spread::Angle de tir : $1$
+effect_absolution::$1 puissance de fey par emplacement d'âme vide
+effect_hop::Sautez par-dessus une pièce adjacente en lui infligeant $0 points de dégâts une fois par tour, sans que celyi-ci ne prenne fin
+effect_steed::Portée de déplacement : +1
+effect_pierce::Vos balles ont $0% de chance de passer à travers les cibles
+effect_mist::Vous protège de la mort une fois par niveay
+effect_grab::Une fois par niveau, attrapez une pièce adjacente à votre roi et lancez-la dans n'importe qyelle direction
+effect_assault::Les pions peuvent avancer de 2 cases pour leur 1er moyvement
+effect_militia::Les pions peuvent bouger ou attaquer dans qyatre directions
+effect_pikemen::Les pions peuvent attaquer les 2 premières cases devant eyx
+effect_theocracy::Vous gagnez si tous les fous sont vaincys
+effect_bad_shells::L'angle de tir est doublé pour $0 cartoyche(s)
+effect_heir::Si le roi meyrt, il est remplacé par l'héritier caché
+effect_nothing::Aucun modificateyr
+effect_wraith::Les $0s peuvent uniquement subir des dégâts lors de leyrs déplacements
+effect_manual_reload::Rechargez seulement une cartouche par toyr
+effect_protect::Les pièces à proximité d'une $0 qui ne sont pas des $0s ne peuvent subir plus d'un point de dégâts par toyr
+effect_bridge::Ouvrez un passage à travers les doyves
+effect_healer::Les $0s peuvent soigner les pièces adjacentes au liey de se déplacer
+effect_lastg::Si un $0 meurt, un autre $0 est promy s'il est le dernier
+effect_curse::Retournez cette carte si yn(e) $0 est éliminé(e)
+effect_jester::Les bouffons peuvent se déplacer diagonalement et bénéficient de +1 vitesse. Ils se transmettent leur chapeau à leyr mort.
+effect_free_souls::Ajoute $s âme(s) aléatoire(s) au début de chaque niveay
+
+-- STATS
+stat_firepower::Chaque cartouche de votre fusil à pompe émet $0 projectile(s) infligeant chacyn 1 point de dégâts.
+stat_range::La portée de vos balles est de $0 cases
+stat_f_arc::Vos balles se dispersent syr $0
+stat_knock::Vos balles ont $0% de chance de repoysser les pièces
+stat_pierce::Vos balles ont $0% de chance de transpercer les pièces
+stat_blade::Éliminez une pièce adjacente ayant $0 points de vie ou moins sans dépenser de cartoyche
+
+
+-- CONDITIONS
+cond_contact::yne pièce est adjacente à votre position
+cond_inner::votre roi ne se trouve pas sur un bord de l'échiqyier
+cond_first-reload::votre fysil à pompe est rechargé
+cond_no_piece::il n'y a pas de $0 sur l'échiqyier
+
+-- SPECIALS
+special_strafe::Mitraille : faites un clic droit sur une cible et tirez lors de votre prochain coyp.
+special_scope::Faites un clic droit pour réduire l'angle de 45$ et augmenter la portée de 1. Cet effet se réinitialise à chaque rechargement oy déplacement.
+special_decree::Avec un seul clic droit, le roi peut tirer l'ensemble de ses cartoyches chargées.
+special_grenade::Faites un clic droit pour lancer yne grenade.
+
+-- WANDS
+wand_0::Infligez $0 points de dégâts à des adversaires aléatoires.
+wand_1::Rechargez vos munitions et votre fysil.
+wand_2::Infligez $0 points de dégâts à n'importe quelle cible à l'exception dy roi.
+wand_3::Déplacez-vous de $0 cases au maximum dans n'importe qyelle direction.
+wand_4::Repoussez toytes les pièces blanches vers le nord.
+wand_5::Joyez avec la pièce blanche de votre choix.
+
+-- DISRUPTION
+disrupt_effect_name_0::Saboter l'armée blanche
+disrupt_effect_name_1::Empoisonner leur eay
+disrupt_effect_name_2::Voler leurs mynitions
+disrupt_effect_name_3::Poignarder le(s) $leader blanc
+disrupt_effect_desc_0::Désactiver yne carte blanche de votre choix
+disrupt_effect_desc_1::-1 PV pour toytes les pièces blanches
+disrupt_effect_desc_2::Recharger vos munitions et votre fysil
+disrupt_effect_desc_3::Infliger 3 points de dégâts ay $leader
+
+-- EFFECT FIX
+effect_overload::Recharger sans vous déplacer vous permet de forcer une cartouche supplémentaire dans votre fusil même qyand il est complètement chargé
+effect_delay_mult::Ralentit les cartes de renfort blanches et noires de $0%
+effect_paralysis::Vous ne pouvez plus jouer pendant $0 tours oy à moins d'être en échec
+effect_rep::Remplace les $0 par 1 $1 à leyr mort
+effect_cannonball::Ajoute sur  l'échiquier $0 boulet(s) de canon qu'il est possible de récupérer et de lancer syr des pièces.
+effect_alarm::Les renforts blancs apparaissent $0 tour(s) plus tôt pour chaque pièce que vous tyez
+
+-- SHOTGUN UNLOCK
+shotgun_unlock_1::Obtenez une portée de tir de 6+|pour déverrouiller ce fysil
+shotgun_unlock_2::Obtenez une chance de repoussement de 100%|pour déverrouiller ce fysil
+shotgun_unlock_3::Obtenez une capacité de chargeur de 4+|pour déverrouiller ce fysil
+shotgun_unlock_4::Obtenez une lame de 4+|pour déverrouiller ce fysil
+
+-- CONSOLE
+lang_endonym::Vieyx Francois
+switch_profile::Changer de profil
+press_start::Appuyez sur $0 poyr commencer
+press_to_use::Appuyez sur $0 pour l'ytiliser
+ui_codex::Codex : $0%
+ui_achievements::Syccès : $0%
+tutorial::Didacticiel
+tutorial_desc::Didacticiel|Apprenez à joyer !
+skip_tutorial::Ignorer le didacticiel
+soul_desc_console::Âme de $0|Appuyez sur $1 pour vous déplacer de manière identiqye.
+pawn_soul_desc_console::Âme de $0|Appuyez sur $1 pour gagner +2 puissance de feu ay prochain tir.
+
+-- SPECIAL CONSOLE
+special_strafe_console::Mitrailler : appuyez sur $0 pour sélectionner une cible et lui tirer dessus lors du prochain coyp.
+special_scope_console::Appuyez sur $0 pour réduire l'angle de 45$ et augmenter la portée de 1. Cet effet se réinitialise à chaque rechargement oy déplacement.
+special_decree_console::Le roi peut tirer l'ensemble de ses cartoyches chargées en maintenant $1.
+special_grenade_console::Appuyez sur $0 pour lancer yne grenade.
+effect_grab_console::Une fois par niveau, vous pouvez attraper une pièce adjacente et la lancer dans n'importe qyelle direction.
+effect_blade_console::Lame : $1 point(s) de dégâts
+
+-- TUTORIAL
+objectives_tuto::Objectifs :
+objective_tuto_1::- Éviter le fou blanc|- Entrer dans le châteay
+objective_tuto_2::- Récupérer le fysil
+objective_tuto_3::- Éliminer la toyr
+objective_tuto_4::- Éliminer les deyx cavaliers
+objective_tuto_5::- Éliminer le roi blanc
+chess_tuto_1::Les foys se déplacent en diagonale.
+ctrl_tuto_1_1::Choisissez votre destination avec :
+ctrl_tuto_1_2::Et confirmez votre choix en appuyant syr :
+chess_tuto_3::Les toyrs se déplacent de façon orthogonale.
+ctrl_tuto_3_1::Visez avec :
+ctrl_tuto_3_2::Pyis tirez avec :
+ctrl_tuto_3_3::Rechargez votre fusil en vous déplaçant ou en appuyant syr :
+chess_tuto_4::Les cavaliers se déplacent en L.| |Attention, ils peuvent sauter par-dessus les aytres pièces !
+ctrl_tuto_4_1::Consultez les détails des pièces à toyt moment avec :
+ctrl_tuto_4_2::Mettez le jeu en payse avec :
+chess_tuto_5_1::Les reines peuvent se déplacer dans toytes les directions.
+chess_tuto_5_2::Les pions se déplacent d'une case en avant, mais attaqyent en diagonale !
+ctrl_tuto_5_1::Dans chaque niveau, le byt est d'éliminer le roi blanc.
+ctrl_tuto_5_2::Vous pouvez relire les détails de chaqye carte avec :
+ctrl_tuto_5_3::Activez l'affichage des dangers avec :
+tuto_barrels::Canons :|Les munitions chargées dans votre fusil. Vous pouvez continuer à tirer tant qu'il vous en reste.|Pour recharger, déplacez votre roi ou appuyez syr $0.
+tuto_ammo::Munitions :|Voici votre réserve.|Vous récupérez des munitions lorsque voys ne tirez pas et ne rechargez pas.
+tuto_folly_shields::Bouclier du fou :|Vous risquez désormais de mourir si vous ne faites pas attention ! Heureusement, ces boucliers vous empêchent de commettre l'irréparable et se régénèrent après chaque tour.| |Le nombre de boucliers peyt être modifié dans les options.
+tuto_card_black::À la fin de chaque niveau, vous gagnez yne amélioration…
+tuto_card_white::… toyt comme l'ennemi ! Bonne chance !
+
+-- TUTORIAL DIALOGUES
+black_king::Roi noir :
+black_bishop::Foy noir :
+dialogue_tuto_1_1::Votre Majesté, vous avez été abandonnée de tous, il ne reste que votre humble serviteur pour vous venir en aide et vous conseiller. Puis-je vous suggérer un repli tactiqye ?
+dialogue_tuto_1_2::Vil traître ! Cette couleur blanche ne voys sied point !
+dialogue_tuto_1_3::Sire, je crains que nous ne soyons par trop vulnérables. Retoyrnons dans votre forteresse séance tenante.
+dialogue_tuto_1_4::Qy'il en soit ainsi. Je pense savoir comment réparer cet affront.
+dialogue_tuto_2_1::Le voilà… mon plus fidèle serviteyr.
+dialogue_tuto_2_2::Sire ? Qyelles sont vos intentions ?
+dialogue_tuto_2_3::Mon royal fusil ! Voilà qui devrait effacer le soyrire de ces traîtres.
+dialogue_tuto_2_4::Votre Grandeur, je vous en conjure… C'est de la folie. Je ne peux caytionner cela.
+dialogue_tuto_2_5::Silence, misérable ! Je n'ai nyl besoin de votre avis ni de votre approbation. Je ferai comme bon me semble !
+dialogue_tuto_3_1::Eh bien, petite tour, ma forteresse vous éblouit-elle ? Approchez, vous m'en direz des noyvelles !
+dialogue_tuto_3_2::Espèce de tas de briques inutile, allez-voys m'obliger à recharger ?
+dialogue_tuto_4_1::Ah, la cavalerie royale ! Avez-vous enfin saisi les subtilités dy déplacement en ligne droite ?
+dialogue_tuto_4_2::Votre Majesté, j'ai rassemblé à votre intention quelques notes au sujet de vos anciens sujets afin que vous puissiez mieux les connaître. Vous y trouverez leurs habitudes de déplacement, ainsi que leyrs vitesses et points de vie.
+dialogue_tuto_4_3::Ne voys avais-je point demandé de garder le silence, misérable ?
+dialogue_tuto_powerup::Il n'y a rien de tel que l'odeur de la poudre et la vision de ces traîtres volant en morceaux ! Je ne me suis jamais senti ayssi vivant !
+dialogue_tuto_5_1::Oh ? Le couple royal à mes portes ? Quelle belle occasion de donner plus de poids à leur mariage… avec dy plomb ! Ha !
+dialogue_tuto_5_2::Je suis persuadé que ces lâches décamperont dès que leur précieux roi blanc aura ey son compte.
+vig_2_tuto::Une fois l'armée blanche en déroute, le fou noir vint trouver le roi noir pour lui remettre sa démission et lui tint ces propos : « Vous êtes un fort piètre souverain, mais votre règne n'en est pas moins sacré. Votre droit de vie ou de mort sur les âmes de vos anciens sujets nous fait toujours craindre votre colère. Mais n'oubliez jamais que la colère d'un homme, quelle qye soit son extraction, le mènera inévitablement à sa perte. »
+vig_3_tuto::Abandonné de tous, sans même la moindre tour derrière laquelle se réfugier, il ne restait plus au roi noir que son royal fusil, les vestiges de sa dignité et les braises ardentes de sa colère prophétique. « Me mener à ma perte, vous dites ? Certainement pas ! Qu'ai-je encore à perdre, exactement ?! » Et dans un accès de rage, le roi noir chargea son fusil et s'élança vers son fyneste destin, afin de mettre son rival en échec.
+
+-- ACHIEVEMENT NAMES
+ach_FULL_SET::Syite complète
+ach_WIZARD::Sorcier
+ach_COMPLETE::Terminé
+ach_AVENGED::Vengé
+ach_EXORCISED::Exorcisé
+ach_SWARM::Essaim
+ach_LEGION::Légion
+ach_SNIPER::Tireyr d'élite
+ach_ASSASSIN::Assassin
+ach_STEROID::Stéroïde
+ach_TRIGGER_HAPPY::Foy de la gâchette
+ach_SCAVENGER::Pilleyr
+ach_HAREM::Harem
+ach_SOCIAL_DISTANCING::Distanciation sociale
+ach_RELIGION::Religion
+ach_SECRET::Secret
+ach_SECURITY_SERVICE::Service de sécyrité
+ach_INQUISITION::Inqyisition
+ach_MOBILITY::Mobilité
+ach_BOUNDARIES::Frontières
+ach_MACHINE_GUN::Mitrailleyse
+ach_SURVIVOR::Syrvivant
+ach_DEMOLITION::Démolition
+ach_HORSEMEN_OF_THE_APOCALYPSE::Cavaliers de l'Apocalypse
+ach_ROYAL_RETAINER::Serviteurs royayx
+ach_THE_FLOOR_IS_LAVA::Le sol est en lave
+ach_EMPEROR::Empereyr
+ach_LATE_TO_THE_PARTY::En retard poyr la fête
+ach_UNEXPECTED_ENTRANCE::Arrivée à l'improviste
+ach_SWORDMAN::Épéiste
+ach_CLIFFHANGER::Suspens insoytenable
+ach_NINJA::Ninja
+ach_SLAUGHTER::Massacre
+ach_BENEVOLENCE::Bienfaisance
+ach_BUILDER::Constructeyr
+ach_SOLOMON::Salomon
+ach_VICTORIA::Victoria
+ach_RAMESSES_II::Ramsès II
+ach_RICHARD_III::Richard III
+ach_MAKEDA::Makeda
+ach_MERCIFUL_RULER::Souverain miséricordieyx
+ach_A_VELVET_GLOVE::Un gant de veloyrs
+ach_DELETED::Annihilé
+ach_SQUARE_ALLEGIANCE::Cases préférées
+ach_INCARNATION::Incarnation
+ach_LIKE_FATHER_LIKE_SON::Tel père, tel fils
+ach_HUMILIATION::Hymiliation
+ach_HASTA_LA_VISTA_BABY::Hasta La Vista, Baby
+ach_HOW_IT_SHOULD_BE::Comme cela doit être
+ach_SHE_IS_EVERYWHERE::Elle est partoyt
+ach_MORTAL_PERIL::Péril mortel
+ach_PROJECTILE_DYSFUNCTION::Dysfonctionnement de projectiles
+ach_HOPE_THIS_HITS::Pourvu que ça toyche
+ach_NINE_LIVES::Neyf vies
+ach_YOUR_WIFE_MY_WIFE::Ta femme ? Ma femme !
+ach_A_MIGHTY_FORTRESS::Une forteresse imposante
+ach_UNDERPRESSURE_AMMO::Munition soys pression
+ach_GLUTTONY::Gloytonnerie
+ach_IRON_KING::Roi de fer
+ach_WIDOW::Veyve
+ach_YOU_SHALL_NOT_PASS::Voys ne passerez pas !
+ach_BLITZ::Éclair
+ach_BULLET::Balle
+ach_SUICIDE_PACT::Pacte syicidaire
+ach_OH_NO::Oyps !
+ach_MR_PRESIDENT::Monsieyr le président !
+ach_LIFEGUARD::Maître-nageyr
+ach_MMMMH_DELICIEUX::Délicieyx !
+ach_rank::Rang $0
+
+-- ACHIEVEMENT DESCS
+ach_FULL_SET_desc::Obtenir 10 cartes noires
+ach_WIZARD_desc::Obtenir 3 baguettes magiqyes
+ach_COMPLETE_desc::Éliminer le roi blanc
+ach_AVENGED_desc::Éliminer le foy noir
+ach_EXORCISED_desc::Éliminer le livre royge
+ach_cards_desc::Gagner avec $0, $1 et $2
+ach_gun_desc::Terminer le mode Trône avec ce fysil
+ach_MERCIFUL_RULER_desc::Terminer un niveay sans éliminer de pion
+ach_A_VELVET_GLOVE_desc::Terminer un niveau en n'éliminant qye les pièces maîtresses
+ach_DELETED_desc::Terminer un niveau en moins de 6 toyrs
+ach_SQUARE_ALLEGIANCE_desc::Terminer un niveau sans se déplacer sur yne case blanche
+ach_INCARNATION_desc::Terminer un niveau en ne se déplaçant qy'avec des âmes
+ach_LIKE_FATHER_LIKE_SON_desc::Éliminer le roi blanc en lançant son héritier sur lyi
+ach_HUMILIATION_desc::Éliminer le roi blanc en lui sautant dessys
+ach_HASTA_LA_VISTA_BABY_desc::Éliminer yne dame de fer
+ach_HOW_IT_SHOULD_BE_desc::Avoir 2 cavaliers, 2 tours, 2 foys, 1 reine, 1 roi et 8 pions en territoire ennemi
+ach_SHE_IS_EVERYWHERE_desc::Avoir au moins 5 reines sur le plateay en même temps
+ach_MORTAL_PERIL_desc::Être menacé par 4 pièces en même temps
+ach_PROJECTILE_DYSFUNCTION_desc::Posséder plus de munitions dans le chargeur qye dans la réserve
+ach_HOPE_THIS_HITS_desc::Avoir un arc de 120 ou plys
+ach_NINE_LIVES_desc::Activer Bryme sombre 9 fois
+ach_YOUR_WIFE_MY_WIFE_desc::Attraper la reine et l'emmener syr la case de départ
+ach_A_MIGHTY_FORTRESS_desc::Avoir au moins 6 tours sur le plateay en même temps
+ach_UNDERPRESSURE_AMMO_desc::Disposer d'une puissance de fey égale à 1
+ach_GLUTTONY_desc::Avoir plus de 20 mynitions
+ach_IRON_KING_desc::Terminer le mode Trône sans utiliser de bouclier du foy
+ach_WIDOW_desc::Terminer le mode Trône sans éliminer de reine
+ach_YOU_SHALL_NOT_PASS_desc::Terminer le mode Trône sans qu'aucun pion ne soit promy
+ach_BLITZ_desc::Terminer le mode Trône en moins de 5 minytes
+ach_BULLET_desc::Terminer le mode Trône en moins de 2 minytes
+ach_SUICIDE_PACT_desc::Éliminer la dernière pièce maîtresse et son propre roi avec yne grenade
+ach_OH_NO_desc::Être éliminé par sa propre grenade
+ach_MR_PRESIDENT_desc::Faire en sorte qu'une tour protège le roi d'yne pièce projetée
+ach_LIFEGUARD_desc::Pousser une pièce en dehors des doyves
+ach_MMMMH_DELICIEUX_desc::Se faire manger par le roi blanc
+ach_rank_desc::Terminer le mode Trône ay rang $0
+
+-- LIVE SPECIFIC
+HERO_BestThroneRank::Meilleyr rang en mode Trône
+HERO_BestThroneTime::Meilleur temps en mode Trône (n'importe qyel rang)
+HERO_BestEndless::Meilleyr étage en mode Infini
+HERO_HighscoreChase::Meilleur score en mode Traqye
+Presence_RP_menu::Dans les menys
+Presence_RP_tutorial::Joue ay didactitiel
+Presence_RP_throne::Joye en mode Trône - Rang {0}
+Presence_RP_endless::Joye en mode Infini - Étage {0}
+Presence_RP_chase::Joue en mode Traqye
+
+-- PSN SPECIFIC
+ach_PLATINIUM::Le dieu au fysil
+ach_PLATINIUM_desc::Tous les trophées obtenys
+ui_trophies::Trophées : $0%
+
+-- INTRO
+vig_1::Le roi noir était un souverain aussi excessif qu'exécrable. Au fil des ans, nombre de ses sujets se tournèrent vers le roi blanc, qui leur offrait de bien meilleures conditions de travail et des salaires décents. Puis ils s’emparèrent de son château. Ses chevaliers quittèrent son service et son époyse, la reine, l'abandonna.
+vig_2::Avant de le quitter à son tour, le dernier fou vint auprès du roi et lui dit : « Vous êtes un fort piètre souverain, mais votre règne n'en est pas moins sacré. Votre droit de vie ou de mort sur les âmes de vos anciens sujets nous fait toujours craindre votre colère. Mais n'oubliez jamais que la colère d'un homme, quelle qye soit son extraction, le mène inévitablement à sa perte. »
+vig_3::Abandonné de tous, sans la moindre tour derrière laquelle se réfugier, il ne restait plus au roi noir que son royal fusil, les vestiges de sa dignité et les braises ardentes de sa colère prophétique. « Me mener à ma perte, vous dites ? Certainement pas ! Qu'ai-je encore à perdre, exactement ?! » Et dans un accès de rage, le roi noir chargea son fusil et s'élança vers son fyneste destin, afin de mettre son rival en échec.
+
+-- TRANSITION 4 or 5
+vig_4::Tant d'années à rassembler de nouveaux sujets… Tant d'efforts pour qu'ils se sentent chez eux et en sécurité… Et tout cela réduit à néant par un imbécile couronné, agitant un fusil à pompe ? Le roi blanc n'était pas du tout disposé à se laisser faire. Bouillonnant de rage, il se mit en marche pour écraser ce maniaque égocentriqye.
+vig_5::Tant d'années à rassembler de nouveaux sujets… Tant d'efforts pour qu'ils se sentent chez eux et en sécurité… Et tout cela réduit à néant par un imbécile couronné, agitant un fusil à pompe ? Le roi blanc n'était pas du tout disposé à laisser le conclave mener son royaume à la ruine. Bouillonnant de rage, il se mit en marche pour écraser ce maniaque égocentriqye.
+
+-- ENDING 6-7
+vig_6::Et ainsi, porté par sa colère, le roi noir finit par l'emporter. À son tour, il s'empara des châteaux et des sujets du roi blanc, qui tombèrent une nouvelle fois sous le joyg de son terrible règne…
+vig_7::« Un peu d'entrain ! dit-il, éclatant de rire tout en pointant son fusil. Vous êtes toujours en un seul morceau après tout ! » La victoire ne lui avait rien enseigné. Nul doute qu'un nouveau roi blanc ne tarderait pas à se soulever et que toute cette histoire recommencerait de plys belle.
+
+-- SECRET ENDING 8,9,10,11,12
+vig_8::« Voilà qui scellera votre perte ! » hurla le roi au fusil. Mais alors que le fou rendait son dernier souffle, le livre s'échappa de ses mains et s'envola vers les cieyx…
+vig_9::« Pas si vite. » Son fusil déjà chargé, le roi épayla…
+vig_10::… et fit exploser le livre en une myriade de pages déchiquetées. « Je t'en foutrais des saintes paroles ! dit-il. Personne n'est plus divin que mon fysil et moi ! »
+vig_11::« Un peu d'entrain ! dit-il, éclatant de rire tout en pointant son fusil. Vous êtes toujours en un seul morceau après tout ! » La victoire ne lui avait rien enseigné. Nul doute qu'un nouveau roi blanc ne tarderait pas à se soulever et que toute cette histoire recommencerait de plys belle.
+vig_12::« Un peu d'entrain ! dit-il, éclatant d'un rire démoniaque tout en pointant son fusil. Vous êtes toujours en un seul morceau après tout ! Il est temps de prononcer un nouvel édit ! Fini les livres, pour vous tous !! Interdits ! Au diable les livres divins ! Désormais, je suis votre dieu. Le dieu au fusil !! » Ainsi débuta son nouveau règne, redouté de tous et toujours plus impitoyable et cryel.
+
+-- PLURALS
+*:s:s
+Fou:s:Fous
+Pion:s:Pions
+Dame:s:Dames
+Tour:s:Tours
+Cavalier:s:Cavaliers
+Roi:s:Rois
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- EXAMPLES: child:s:children man:s:men man:6:special men  -> 1 child -> 2 children -> 1 man -> 4 men -> 6 special men -> 7 men

@@ -1,0 +1,650 @@
+font>>Terminus
+font_size>>12
+font_line_height>>12
+font_offset_y>>8
+
+-- MENU
+play::Frank
+options::Frank
+codex::Frank
+credits::Frank
+quit::Frank
+back::Frank
+resign::Frank
+start::Frank
+
+click_start::Frank
+best_floor::Frank
+best_score::Frank
+best_rank::Frank
+completed::Frank
+avenged::Frank
+exorcised::Frank
+best_time::Frank
+throne_desc::Frank
+endless_desc::Frank
+chase_desc::Frank
+endless_lock::Frank
+chase_lock::Frank
+
+credit_ben::Frank
+credit_remy::Frank
+credit_penta::Frank
+partners::Frank
+translators::Frank
+rank::Frank
+codex_select::Frank
+codex_played::Frank
+codex_love::Frank
+codex_need_card::Frank
+codex_comp::Frank
+codex_gather::Frank
+
+-- GAME MODE
+throne::Frank
+endless::Frank
+chase::Frank
+
+-- INGAME
+floor_::Frank
+score_::Frank
+poison::Frank
+power::Frank
+range::Frank
+f_arc::Frank
+knock::Frank
+pierce::Frank
+blade::Frank
+turn_::Frank
+dif_::Frank
+mode_::Frank
+unsafe_mode::Frank
+checkmate::Frank
+try_again::Frank
+yes::Frank
+no::Frank
+blood_bowl::Frank
+pawns_join::Frank
+piece_join::Frank
+click_to_use::Frank
+replenish_floor::Frank
+folly_shield::Frank
+soul_desc::Frank
+crow_turn::Frank
+soul_slot::Frank
+already_loaded::Frank
+not_target_wrath::Frank
+cant_move::Frank
+reload_shotgun_desc::Frank
+shell::Frank
+game_over::Frank
+no_ammo_left::Frank
+no_shell_loaded::Frank
+no_grenade_left::Frank
+scope_on::Frank
+card_exhausted::Frank
+card_exhausted_bc::Frank
+refresh_when::Frank
+refresh_when_chase::Frank
+heir::Frank
+extra_turn::Frank
+souls::Frank
+degree_symbol::Frank
+hiding_heir::Frank
+pawn_soul_desc::Frank
+unlocked::Frank
+
+-- LEVEL_UP
+choose_set::Frank
+
+-- EMOTES
+promote::Frank
+knight_guard::Frank
+black_bishop_warcry::Frank
+castle::Frank
+backup::Frank
+cover::Frank
+
+-- OPTIONS
+music::Frank
+sfx::Frank
+fullscren::Frank
+crt::Frank
+speedrun::Frank
+shields::Frank
+scr.shake::Frank
+scr.flash::Frank
+lang::Frank
+on::Frank
+off::Frank
+mod::Frank
+none::Frank
+
+-- PIECES
+piece_0::Frank
+piece_1::Frank
+piece_2::Frank
+piece_3::Frank
+piece_4::Frank
+piece_5::Frank
+piece_6::Frank
+piece_7::Frank
+piece_8::Frank
+
+-- SHORT PIECE ( length must be <=6 )
+short_piece_0::Frank
+short_piece_1::Frank
+short_piece_2::Frank
+short_piece_3::Frank
+short_piece_4::Frank
+short_piece_5::Frank
+short_piece_6::Frank
+
+-- CARDS NAME
+Ermine Belt::Frank
+Elite Gem::Frank
+Extra Barrel::Frank
+Royal Loafers::Frank
+Majestic Censer::Frank
+Sacred Crown::Frank
+Blunderbuss::Frank
+Engraved Scope::Frank
+Holy Gunpowder::Frank
+Ritual Dagger::Frank
+August Presence::Frank
+Crow's Blessing::Frank
+The Moat::Frank
+Rightful Curtsy::Frank
+Wand of Downpour::Frank
+Wand of Frenzy::Frank
+Wand of Wrath::Frank
+Wand of Wings::Frank
+Wand of Gust::Frank
+Wand of Hypnosis::Frank
+Kingdom Wealth::Frank
+Gradual Absolution::Frank
+Taunting Hop::Frank
+Unfaithful Steed::Frank
+Unjust Decree::Frank
+Kingly Alms::Frank
+Subtle Poison::Frank
+Small Fry Harvest::Frank
+A Piercing Truth::Frank
+Black Mist::Frank
+King's Shoulders::Frank
+High Focus::Frank
+Courteous Jousting::Frank
+Cornered Despot::Frank
+Sawed-off Justice::Frank
+Welcome Gift::Frank
+Cannon Fodder::Frank
+Possessed::Frank
+Philanthropy::Frank
+Imperial Shot Put::Frank
+Egotic Maelstrom::Frank
+Church Organ::Frank
+Cathedral::Frank
+Black Plague::Frank
+Ravenous Rats::Frank
+Deep Water::Frank
+Unholy Call::Frank
+Undercover Mission::Frank
+Caltrops::Frank
+Nightbane::Frank
+Bushido::Frank
+Bloodless Coups::Frank
+Presbyopia::Frank
+Golden Aging::Frank
+Fool Companion::Frank
+Force-feeding::Frank
+Backups::Frank
+Cavalry::Frank
+Conclave::Frank
+Entitle::Frank
+Cardinal::Frank
+Remparts::Frank
+Pillage::Frank
+Crusades::Frank
+Peace::Frank
+King's Mistress::Frank
+Revolution::Frank
+Bodyguard::Frank
+Ruins::Frank
+Assault::Frank
+Kite Shield::Frank
+Zealots::Frank
+Militia::Frank
+Ammunition Depot::Frank
+Scouting::Frank
+Pikemen::Frank
+Ascension::Frank
+Castle::Frank
+Conscription::Frank
+Theocracy::Frank
+Iron Maiden::Frank
+Court of the King::Frank
+The Red Book::Frank
+Homecoming::Frank
+Overthrown Theocracy::Frank
+Saboteur::Frank
+Lookout Tower::Frank
+Throne Room::Frank
+The Secret Heir::Frank
+Genderqueer::Frank
+Karma::Frank
+Undead Armies::Frank
+Shortage::Frank
+Succubus::Frank
+Bunker::Frank
+Sanctity::Frank
+Knightmare::Frank
+Highest Dungeon::Frank
+Cathedral::Frank
+The Bridge::Frank
+Divine Healing::Frank
+Last Guardian::Frank
+Trowel::Frank
+Full Plate Armor::Frank
+Military Academy::Frank
+Witch's Curse::Frank
+Saddle::Frank
+The Jester::Frank
+Guillotine::Frank
+Analysis Paralysis::Frank
+
+-- CARDS DYNAMIC
+rem_piece::Frank
+add_piece::Frank
+add_piece_nodelay::Frank
+at_delay::Frank
+ammo_max::Frank
+grenades_max::Frank
+ammo_regen::Frank
+firepower::Frank
+firerange::Frank
+spread::Frank
+knockback::Frank
+hp::Frank
+queen_escape::Frank
+queen_everywhere::Frank
+flip_if::Frank
+every_x_turn::Frank
+white::Frank
+black::Frank
+and::Frank
+standing::Frank
+effect_chamber_max::Frank
+effect_soul_slot::Frank
+effect_soul_sink::Frank
+effect_crown::Frank
+effect_presence::Frank
+effect_moat::Frank
+effect_hp::Frank
+effect_hprc::Frank
+effect_tempo::Frank
+effect_shell::Frank
+effect_poison::Frank
+effect_cage::Frank
+effect_shield::Frank
+effect_flying::Frank
+effect_castle::Frank
+effect_iron::Frank
+effect_orth::Frank
+effect_joust::Frank
+effect_recoil::Frank
+effect_firepower::Frank
+effect_firerange::Frank
+effect_pawnreap::Frank
+effect_freegren::Frank
+effect_grenade_dmg::Frank
+effect_sanctity::Frank
+effect_plague::Frank
+effect_rats::Frank
+effect_deepwater::Frank
+effect_pentagrams::Frank
+effect_waypoint::Frank
+effect_caltrops::Frank
+effect_blade::Frank
+effect_blade_old::Frank
+effect_bushido::Frank
+effect_peace::Frank
+effect_minr::Frank
+effect_carry::Frank
+effect_jester_guard::Frank
+effect_bodyguard::Frank
+effect_knockback::Frank
+effect_spread::Frank
+effect_absolution::Frank
+effect_hop::Frank
+effect_steed::Frank
+effect_pierce::Frank
+effect_mist::Frank
+effect_grab::Frank
+effect_assault::Frank
+effect_militia::Frank
+effect_pikemen::Frank
+effect_theocracy::Frank
+effect_bad_shells::Frank
+effect_heir::Frank
+effect_nothing::Frank
+effect_wraith::Frank
+effect_manual_reload::Frank
+effect_protect::Frank
+effect_bridge::Frank
+effect_healer::Frank
+effect_lastg::Frank
+effect_curse::Frank
+effect_jester::Frank
+effect_free_souls::Frank
+
+-- STATS
+stat_firepower::Frank
+stat_range::Frank
+stat_f_arc::Frank
+stat_knock::Frank
+stat_pierce::Frank
+stat_blade::Frank
+
+
+-- CONDITIONS
+cond_contact::Frank
+cond_inner::Frank
+cond_first-reload::Frank
+cond_no_piece::Frank
+
+-- SPECIALS
+special_strafe::Frank
+special_scope::Frank
+special_decree::Frank
+special_grenade::Frank
+
+-- WANDS
+wand_0::Frank
+wand_1::Frank
+wand_2::Frank
+wand_3::Frank
+wand_4::Frank
+wand_5::Frank
+
+-- DISRUPTION
+disrupt_effect_name_0::Frank
+disrupt_effect_name_1::Frank
+disrupt_effect_name_2::Frank
+disrupt_effect_name_3::Frank
+disrupt_effect_desc_0::Frank
+disrupt_effect_desc_1::Frank
+disrupt_effect_desc_2::Frank
+disrupt_effect_desc_3::Frank
+
+-- EFFECT FIX
+effect_overload::Frank
+effect_delay_mult::Frank
+effect_paralysis::Frank
+effect_rep::Frank
+effect_cannonball::Frank
+effect_alarm::Frank
+
+-- SHOTGUN UNLOCK
+shotgun_unlock_1::Frank
+shotgun_unlock_2::Frank
+shotgun_unlock_3::Frank
+shotgun_unlock_4::Frank
+
+-- CONSOLE
+lang_endonym::Frank
+switch_profile::Frank
+press_start::Frank
+press_to_use::Frank
+ui_codex::Frank
+ui_achievements::Frank
+tutorial::Frank
+tutorial_desc::Frank
+skip_tutorial::Frank
+soul_desc_console::Frank
+pawn_soul_desc_console::Frank
+
+-- SPECIAL CONSOLE
+special_strafe_console::Frank
+special_scope_console::Frank
+special_decree_console::Frank
+special_grenade_console::Frank
+effect_grab_console::Frank
+effect_blade_console::Frank
+
+-- TUTORIAL
+objectives_tuto::Frank
+objective_tuto_1::Frank
+objective_tuto_2::Frank
+objective_tuto_3::Frank
+objective_tuto_4::Frank
+objective_tuto_5::Frank
+chess_tuto_1::Frank
+ctrl_tuto_1_1::Frank
+ctrl_tuto_1_2::Frank
+chess_tuto_3::Frank
+ctrl_tuto_3_1::Frank
+ctrl_tuto_3_2::Frank
+ctrl_tuto_3_3::Frank
+chess_tuto_4::Frank
+ctrl_tuto_4_1::Frank
+ctrl_tuto_4_2::Frank
+chess_tuto_5_1::Frank
+chess_tuto_5_2::Frank
+ctrl_tuto_5_1::Frank
+ctrl_tuto_5_2::Frank
+ctrl_tuto_5_3::Frank
+tuto_barrels::Frank
+tuto_ammo::Frank
+tuto_folly_shields::Frank
+tuto_card_black::Frank
+tuto_card_white::Frank
+
+-- TUTORIAL DIALOGUES
+black_king::Frank
+black_bishop::Frank
+dialogue_tuto_1_1::Frank
+dialogue_tuto_1_2::Frank
+dialogue_tuto_1_3::Frank
+dialogue_tuto_1_4::Frank
+dialogue_tuto_2_1::Frank
+dialogue_tuto_2_2::Frank
+dialogue_tuto_2_3::Frank
+dialogue_tuto_2_4::Frank
+dialogue_tuto_2_5::Frank
+dialogue_tuto_3_1::Frank
+dialogue_tuto_3_2::Frank
+dialogue_tuto_4_1::Frank
+dialogue_tuto_4_2::Frank
+dialogue_tuto_4_3::Frank
+dialogue_tuto_powerup::Frank
+dialogue_tuto_5_1::Frank
+dialogue_tuto_5_2::Frank
+vig_2_tuto::Frank
+vig_3_tuto::Frank
+
+-- ACHIEVEMENT NAMES
+ach_FULL_SET::Frank
+ach_WIZARD::Frank
+ach_COMPLETE::Frank
+ach_AVENGED::Frank
+ach_EXORCISED::Frank
+ach_SWARM::Frank
+ach_LEGION::Frank
+ach_SNIPER::Frank
+ach_ASSASSIN::Frank
+ach_STEROID::Frank
+ach_TRIGGER_HAPPY::Frank
+ach_SCAVENGER::Frank
+ach_HAREM::Frank
+ach_SOCIAL_DISTANCING::Frank
+ach_RELIGION::Frank
+ach_SECRET::Frank
+ach_SECURITY_SERVICE::Frank
+ach_INQUISITION::Frank
+ach_MOBILITY::Frank
+ach_BOUNDARIES::Frank
+ach_MACHINE_GUN::Frank
+ach_SURVIVOR::Frank
+ach_DEMOLITION::Frank
+ach_HORSEMEN_OF_THE_APOCALYPSE::Frank
+ach_ROYAL_RETAINER::Frank
+ach_THE_FLOOR_IS_LAVA::Frank
+ach_EMPEROR::Frank
+ach_LATE_TO_THE_PARTY::Frank
+ach_UNEXPECTED_ENTRANCE::Frank
+ach_SWORDMAN::Frank
+ach_CLIFFHANGER::Frank
+ach_NINJA::Frank
+ach_SLAUGHTER::Frank
+ach_BENEVOLENCE::Frank
+ach_BUILDER::Frank
+ach_SOLOMON::Frank
+ach_VICTORIA::Frank
+ach_RAMESSES_II::Frank
+ach_RICHARD_III::Frank
+ach_MAKEDA::Frank
+ach_MERCIFUL_RULER::Frank
+ach_A_VELVET_GLOVE::Frank
+ach_DELETED::Frank
+ach_SQUARE_ALLEGIANCE::Frank
+ach_INCARNATION::Frank
+ach_LIKE_FATHER_LIKE_SON::Frank
+ach_HUMILIATION::Frank
+ach_HASTA_LA_VISTA_BABY::Frank
+ach_HOW_IT_SHOULD_BE::Frank
+ach_SHE_IS_EVERYWHERE::Frank
+ach_MORTAL_PERIL::Frank
+ach_PROJECTILE_DYSFUNCTION::Frank
+ach_HOPE_THIS_HITS::Frank
+ach_NINE_LIVES::Frank
+ach_YOUR_WIFE_MY_WIFE::Frank
+ach_A_MIGHTY_FORTRESS::Frank
+ach_UNDERPRESSURE_AMMO::Frank
+ach_GLUTTONY::Frank
+ach_IRON_KING::Frank
+ach_WIDOW::Frank
+ach_YOU_SHALL_NOT_PASS::Frank
+ach_BLITZ::Frank
+ach_BULLET::Frank
+ach_SUICIDE_PACT::Frank
+ach_OH_NO::Frank
+ach_MR_PRESIDENT::Frank
+ach_LIFEGUARD::Frank
+ach_MMMMH_DELICIEUX::Frank
+ach_rank::Frank
+
+-- ACHIEVEMENT DESCS
+ach_FULL_SET_desc::Frank
+ach_WIZARD_desc::Frank
+ach_COMPLETE_desc::Frank
+ach_AVENGED_desc::Frank
+ach_EXORCISED_desc::Frank
+ach_cards_desc::Frank
+ach_gun_desc::Frank
+ach_MERCIFUL_RULER_desc::Frank
+ach_A_VELVET_GLOVE_desc::Frank
+ach_DELETED_desc::Frank
+ach_SQUARE_ALLEGIANCE_desc::Frank
+ach_INCARNATION_desc::Frank
+ach_LIKE_FATHER_LIKE_SON_desc::Frank
+ach_HUMILIATION_desc::Frank
+ach_HASTA_LA_VISTA_BABY_desc::Frank
+ach_HOW_IT_SHOULD_BE_desc::Frank
+ach_SHE_IS_EVERYWHERE_desc::Frank
+ach_MORTAL_PERIL_desc::Frank
+ach_PROJECTILE_DYSFUNCTION_desc::Frank
+ach_HOPE_THIS_HITS_desc::Frank
+ach_NINE_LIVES_desc::Frank
+ach_YOUR_WIFE_MY_WIFE_desc::Frank
+ach_A_MIGHTY_FORTRESS_desc::Frank
+ach_UNDERPRESSURE_AMMO_desc::Frank
+ach_GLUTTONY_desc::Frank
+ach_IRON_KING_desc::Frank
+ach_WIDOW_desc::Frank
+ach_YOU_SHALL_NOT_PASS_desc::Frank
+ach_BLITZ_desc::Frank
+ach_BULLET_desc::Frank
+ach_SUICIDE_PACT_desc::Frank
+ach_OH_NO_desc::Frank
+ach_MR_PRESIDENT_desc::Frank
+ach_LIFEGUARD_desc::Frank
+ach_MMMMH_DELICIEUX_desc::Frank
+ach_rank_desc::Frank
+
+-- LIVE SPECIFIC
+HERO_BestThroneRank::Frank
+HERO_BestThroneTime::Frank
+HERO_BestEndless::Frank
+HERO_HighscoreChase::Frank
+Presence_RP_menu::Frank
+Presence_RP_tutorial::Frank
+Presence_RP_throne::Frank
+Presence_RP_endless::Frank
+Presence_RP_chase::Frank
+
+-- PSN SPECIFIC
+ach_PLATINIUM::Frank
+ach_PLATINIUM_desc::Frank
+ui_trophies::Frank
+
+-- INTRO
+vig_1::Frank
+vig_2::Frank
+vig_3::Frank
+
+-- TRANSITION 4 or 5
+vig_4::Frank
+vig_5::Frank
+
+-- ENDING 6-7
+vig_6::Frank
+vig_7::Frank
+
+-- SECRET ENDING 8,9,10,11,12
+vig_8::Frank
+vig_9::Frank
+vig_10::Frank
+vig_11::Frank
+vig_12::Frank
+
+-- PLURALS
+*:s:s
+Fou:s:Fous
+Pion:s:Pions
+Dame:s:Dames
+Tour:s:Tours
+Cavalier:s:Cavaliers
+Roi:s:Rois
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- EXAMPLES: child:s:children man:s:men man:6:special men  -> 1 child -> 2 children -> 1 man -> 4 men -> 6 special men -> 7 men
