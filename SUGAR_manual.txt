@@ -1,0 +1,1417 @@
+SUGAR v0.0.6b
+by Remy Devaux // @trasevol_dog // remy@trasevol.dog
+
+  Welcome to SUGAR!
+  SUGAR is a 2D game engine designed for making small neo-retro games and programs.
+
+
+-------------------------------
+	core
+- - - - - - - - - - - - - - - -
+
+	These are some basic functions for using the engine.
+
+
+load(	filepath )
+	Loads a lua file to run.
+
+run( )
+	Runs the loaded lua file, then calls _init if it is defined, then starts calling _update and _draw every frame.
+
+stop( )
+	Stops the running program.
+
+resume( )
+	Resumes the program.
+
+step( )
+	Advances the program by one frame, calling _update and _draw.
+
+execute(	lua_code )
+	Executes the code in the string lua_code.
+
+reset( )
+	Closes all non-tool windows, deletes surfaces, unloads assets, erases controls.
+
+export(	name )
+	Exports the project to a standalone folder containing an executable for the program.
+	The folder will be named "[name]_windows".
+	Windows is the only platform currently supported for Sugar exports in this version.
+
+
+-------------------------------
+	manual
+- - - - - - - - - - - - - - - -
+
+	To help you get a grip on SUGAR.
+	It is recommended use mantxt at least once to skim through the whole manual and see what functions are available.
+
+
+help( )
+	Prints out some helpful indications in the console.
+
+man(	[function] )
+man(	[category] )
+	Prints out an explainer in the console.
+	'man' without parameters to list categories.
+	'man [category]' to list functions in that category.
+
+changelog(	[version] )
+	Prints out the changelog for the current version, or for the demanded version if the argument is set.
+
+mantxt( )
+	Saves the whole manual to manual.txt.
+
+
+-------------------------------
+	misc
+- - - - - - - - - - - - - - - -
+
+	These functions don't quite fit any other categories.
+
+
+sysbat( )
+	Gets info about the battery.
+	Returns the percentage of charged battery, whether the machine is operating on battery, and how many seconds are left until the battery runs out.
+		pctg, on_bat, secs = sysbat()
+
+syslang( )
+	Returns the user's preferred language and preferred varient of that language.
+	Each result is either nil or a 2-characters string.
+		a, b = syslang() -- > "en", "US" -- US english
+		a, b = syslang() -- > "fr", nil  -- generic french
+
+url(	link )
+	Opens 'link' in the OS's default browser.
+
+
+-------------------------------
+	string
+- - - - - - - - - - - - - - - -
+
+	SUGAR provides these functions for manipulating Lua strings.
+
+
+type(	v )
+	Returns the type of v as a string.
+
+sub(	str pos1 [pos2] )
+	Returns a portion of the string str, starting at pos1 and up to pos2 if set, or to the end of str.
+		sub("hello!", 2,4) --> "ell"
+		sub("hello!", 3)   --> "llo!"
+
+ord(	str [i] )
+	Returns the character value of the character at 'i' in the string, or the first character in the string if 'i' isn't set.
+		ord("ABCD")    --> 65, for 'A'
+		ord("ABCD", 2) --> 66, for 'B'
+
+chr(	a [...] )
+	Returns the character corresponding to 'a' as a character value.
+	If more arguments are passed, returns a string made up of the characters corresponding from each argument.
+		chr(65)       --> 'A'
+		chr(65,66,67) --> "ABC"
+
+tostr(	a )
+	Returns 'a' converted to a string.
+
+tonum(	a )
+	Attempts to convert 'a' to a number.
+	Returns the number if it succeeds.
+	Returns nil is it fails.
+
+format(	str ... )
+	Lets you build a formatted string from a format and given arguments
+	Please refer to string.format on this page for more info: https://lua-users.org/wiki/StringLibraryTutorial
+		format("hello %d %s!", 2, "you")
+		-> "hello 2 you!"
+
+find(	str ptrn [idx [plain]] )
+	Looks for 'ptrn' in 'str' and returns indexes to the start and the end of first occurence found, or nil if nothing is found.
+	If idx is set, searches from that character index onward. If idx is negative, starts at '-idx' characters from the end.
+	'ptrn' may use pattern matching formating. You can set the 'plain' parameter as true to disable it.
+	To learn more about pattern matching formatting, please refer to this page: http://lua-users.org/wiki/PatternsTutorial
+		find("hello world", "lo") --> 4, 5
+		find("hello world", "o", 6) --> 8, 8
+		find("hello world", "l", -3) --> 10, 10
+
+sbs(	str ptrn replace [n] )
+	Substitutes occurences of 'ptrn' in 'str' with 'replace'.
+	If 'n' is set, only replaces the first 'n' occurences found.
+	Both 'ptrn' and 'replace' may use special syntax to achieve more complex pattern recognition and replacing. Please refer to string.gsub on this page: http://lua-users.org/wiki/StringLibraryTutorial
+	If 'ptrn' uses capture syntax (see link above), 'replace' may also be a function, in which case it will be called with the captures that are found. If the function returns a string, the value will come replace the capture found in the original string. (this is an advanced use)
+		sbs("hello world", "world", "you")
+		-> "hello you"
+		sbs("banana", "a", "4", 2)
+		-> "b4n4na"
+		sbs("banana", "(a)(n)", "_%2%1 ")
+		-> "b_na_naa"
+
+match(	str ptrn [idx] )
+	Returns substrings corresponding to patterns corresponding to 'ptrn' found in 'str'.
+	If 'idx' is set, starts the search from that character index in the string.
+	You can learn about pettern matching at http://lua-users.org/wiki/PatternsTutorial
+		match("hello world", "ll...")
+		-> "llo w"
+
+
+-------------------------------
+	table
+- - - - - - - - - - - - - - - -
+
+	SUGAR provides these functions for manipulating Lua tables.
+
+
+add(	tbl v [index] )
+	Adds v at the end of the table tbl.
+	If index is set, inserts v at that position instead.
+		a = {}
+		add(a, 3)    --> a={3}
+		add(a, "hi") --> a={3, "hi"}
+
+del(	tbl v )
+	Deletes the first instance of v found in the table tbl.
+	Moves back the following elements to close space.
+	If v isn't found in tbl, nothing is done.
+		a = {3,5,6}
+		del(a, 5)  --> a={3,6}
+
+deli(	tbl i )
+	Deletes the element at position i in the table tbl.
+	Moves back the following elements to close space.
+
+foreach(	tbl foo )
+	Calls the function foo with each item in the table tbl.
+		a = {1,2,3}
+		foreach(a, print)
+
+all(	tbl )
+	To use in 'for' loops, to iterate on the items in the table tbl.
+	Will only iterate over elements linearly indexed, starting from 1.
+		a = {1,2,3}
+		for n in all(a) do
+		  print(n)
+		end
+
+pairs(	tbl )
+	To use in 'for' loops, iterates on all the items in tbl, providing every item's key and value.
+	Will iterate over all items stored in tbl, regardless of indexing.
+	Order cannot be predicted.
+		t = {
+		  [1] = "hi",
+		  ["hey"] = "ok"
+		}
+		for k,v in pairs(t) do
+		  print(k.." : "..v)
+		end
+
+ipairs(	tbl )
+	Like 'pairs' but only iterates over elements linearly indexed, and following their order.
+
+unpack(	tbl )
+	Syntaxically extracts elements of a table.
+		a,b,c = unpack({1,2,3})
+		--> a=1  b=2  b=3
+		function foo(d,e,f) end
+		t = {4,5,6}
+		foo(unpack(t))
+		--> foo(4,5,6)
+
+
+-------------------------------
+	debug
+- - - - - - - - - - - - - - - -
+
+	SUGAR features a simple debug log system with a distinction between informational logs, warnings, and errors. Those logs are stored in log.txt in the project.
+
+
+log(	str )
+wlog(	str )
+rlog(	str )
+	Adds str to the logs as informational, a warning, or an error, respectively.
+
+logdupe(	filepath )
+	Duplicates the current log to 'filepath'_000.txt. The number part is incremented automatically.
+	The duplicate will keep on receiving new logs until Sugar stops or until logdupe gets called again.
+	In exports, if an error happens, Sugar will call logdupe to create a crash log.
+
+hex(	num [full_bytes [prefix]] )
+	Returns the number num as a string in hexadecimal format.
+	If full_bytes is true, will always return an even number of digits, as 2 digits make up one byte.
+	If prefix is true, the returned number is prefixed with "0x".
+	full_bytes and prefix are both true by default.
+
+assert(	bool str )
+	If bool fails, aborts the program and adds str to the logs as an error.
+
+abort(	[str] )
+	Aborts the program. If str is set, it is added to the logs as an error.
+
+clipboard(	[str] )
+	If str is set, writes it to the clipboard.
+	If it isn't, returns the clipboard's content.
+
+
+-------------------------------
+	files
+- - - - - - - - - - - - - - - -
+
+	These functions allow for basic file browsing.
+	'cd' and 'ls' are mainly intended to be used in the console.
+
+
+cd(	[path] )
+	Changes Directory.
+	Use ".." as path to go to parent directory.
+
+ls(	[path [silent]] )
+	Lists the files in the current directory or in the folder at 'path' if it is set.
+	If 'silent' isn't set or is false, writes the list in the console.
+
+mkdir(	[path] )
+	Creates inexistant directory(/ies) in path.
+
+namefind(	filename extention [digits] )
+	Finds a non-existant filename in the format 'filename'[number]'extention'. The number will always be composed of 'digits' and increments as files of the format are found.
+	'digits' defaults to 3.
+		for i=0,2 do
+		  file(namefind("hello_", ".txt", 5), "new file")
+		end
+		-> "hello_00000.txt" -> "new file"
+		-> "hello_00001.txt" -> "new file"
+		-> "hello_00002.txt" -> "new file"
+
+file(	filepath [str] )
+	If str is set, writes it as the filepath file.
+	If it isn't, returns the content of the filepath file as a string. If the file doesn't exist or is empty, returns nil.
+
+rm(	filepath )
+	Deletes file at filepath.
+
+desktop_path( )
+	Returns the path to the users' desktop folder.
+
+
+-------------------------------
+	time
+- - - - - - - - - - - - - - - -
+
+	You can limit the frequency of calling _update() and _draw() using fpslimit.
+	You can check for your program's performance with aft. (Average Frame Time) This performance does depend on the machine and the other processes running on it.
+
+
+t( )
+time( )
+	Returns the time since the last call to 'run' in seconds.
+	Alternatively you may call time() for the same result.
+
+dt( )
+delta( )
+	Both return the time between the current frame and the last in seconds.
+
+fpslimit(	[n] )
+	If n is set, limits the number of times _update and _draw are called in a second to n.
+	Otherwise, removes the fps limit.
+	By default, SUGAR starts with 60 as fps limit.
+
+sleep(	n )
+freeze(	n )
+	Waits n seconds before continuing with the program.
+	With sleep, the waited time will be added to dt/delta for the next frame.
+	With freeze, the waited time will be ignored by dt/delta.
+	If you're not sure which to use, prefer freeze.
+
+fps( )
+	Returns the current number of frames per second, as averaged across 64 frames.
+	The result will not go above the current fps limit if it is set.
+
+aft( )
+	Returns the Average Frame Time, across the last 64 frames.
+	This ignores the fps limit and gives you the average time needed to process each frame instead.
+	A lower number means your program is more performant.
+
+ltime( )
+gtime( )
+	Returns the local time for ltime, or the GMT/UTC time for gtime, as follows:
+		 second, minute, hour, day, month, year, weekday = ltime()
+
+
+-------------------------------
+	graphics
+- - - - - - - - - - - - - - - -
+
+	This category encompasses graphical operation parameters, palette operations, and graphical surfaces.
+	'man drawing' for drawing shapes.
+	'man sprites' for using sprites.
+	'man text' for rendering text.
+
+
+camera(	[x y] )
+	Sets a coordinate offset of -x;-y for all drawing operations until this function is called again.
+	camera() to reset the offset back to 0.
+
+tcamera(	[x y] )
+	Adds -x;-y the camera offset.
+
+clip(	[x y w h [use_cam]] )
+	Sets a clipping region delimiting all drawing operations' area of effect, until this function is called again.
+	If 'use_cam' is true, uses the camera offset.
+	clip() to reset.
+
+color(	[c0 [c1]] )
+	Sets the colors to be used by drawing operations.
+	(*technical) If c1 isn't defined, it takes the value from the second lower byte of c0's integer value.
+	c0 defaults to 0.
+
+pal(	[ca cb [scr_lvl]] )
+pal(	[tbl [scr_lvl]] )
+	Swaps the color ca for the color cb.
+	pal() to reset.
+	If scr_lvl isn't set (or is false), this affects drawing operations directly.
+	If scr_lvl is set and true, this doesn't affect drawing operations, but will swap the colors rendered to physical screen instead.
+	When the first parameter is a table, it is used to map palette swaps.
+		pal {[3]=5, [7]=8}
+		pal(3, 5) pal(7, 8)
+
+palette(	[name] )
+palette(	[tbl] )
+	Switches SUGAR's palette.
+	If 'name' is a known palette, uses that palette.
+	If 'name' ends in ".png", tries to load the file 'name' and makes a palette from it.
+	If you use the function with a table, it will make the palette from the RGB values listed in the table. (0xRRGGBB)
+	palette() returns the number of colors in the current palette.
+		palette {0x000000, 0xffffff} -- sets the palette to black & white
+		known palette names are: kirokaze_gb, gb_chocolate, black_zero_gb pokemon_gb blessing oil6 nyx8 equpix15 pico8 sweetie16 grunge_shift bubblegum16 mail24 arcade29 pico8+ ufo50 famicube aap_splendor128
+
+rgb(	r g b )
+	Returns the color rgb as 0xRRGGBB.
+	r, g, b are taken to be within the 0-255 range.
+
+hsv(	h s v )
+	Converts and returns the hsv color to an 0xRRGGBB value.
+	h, s, v are taken to be within the 0-255 range.
+
+newsrf(	w h [name [mem_adr]] )
+newsrf(	w h [mem_adr] )
+newsrf(	data [name [mem_adr]] )
+newsrf(	data [mem_adr] )
+	Creates a new surface and returns its name.
+	if name isn't set, a numerical name is automatically set.
+	if mem_adr isn't set, free space is found in the memory.
+	if data ends in ".png", loads it as a png file. Otherwise, attempts to parse data as an expsrf export.
+
+delsrf(	name )
+	frees the surface called 'name' created with newsrf.
+
+target(	[name] )
+	Sets the surface called 'name' as target for all operations.
+	target() resets to the window's screen surface as target.
+
+expsrf( )
+	Returns the target surface's data as a text string.
+	This returned string can be used as the 'data' argument for newsrf.
+
+srfmem(	[name] )
+	Returns the memory info for the specified surface, or the current target surface, in this order:
+		adress, length, chunk = srfmem()
+
+srfsize(	[name] )
+	Returns the width and height of the specified surface, or the current target surface.
+		w, h = srfsize()
+
+srfshot(	filename scale [use_shader] )
+srfshot(	filename w h [use_shader] )
+	Saves the current target surface as the png file 'filename'.
+	scale defines every pixel's size in the saved file. (must be >=1)
+	alternatively, w and h define the size of the output picture.
+	If use_shader is true, applies the current shader to the output.
+
+
+-------------------------------
+	drawing
+- - - - - - - - - - - - - - - -
+
+	This category groups the functions which draw primitive shapes.
+	Those functions can be used on the screen or any created surface by using the 'target' function.
+
+
+fillp(	[ptrn [trsp]] )
+	Sets a 4x4 2-color tiling fill pattern for drawing shapes.
+	This pattern is built from the bits of the ptrn value. See example below.
+	If trsp is set and true, only one color will be drawn and the other will be transparent. Otherwise, the two colors from 'color' are used.
+		fillp(0b 1010 0000 1010 0000) -- will give this pattern:
+		 B a B a
+		 a a a a
+		 B a B a
+		 a a a a
+
+cls(	[v] )
+	Clears the current target surface, setting all its pixels to 'c'.
+	'v' defaults to 0.
+
+rect(	xa ya xb yb [col] )
+rectfill(	xa ya xb yb [col] )
+	Draws a rectangle or filled rectangle between the points xa;ya and xb;yb.
+
+circ(	x y r [col] )
+circfill(	x y r [col] )
+	Draws a circle or filled circle at x;y with radius r.
+	(technical) If (r%1 < 0.5) the diameter of the circle will be even, if (r%1 >= 0.5) it will be odd.
+
+tri(	xa ya xb yb xc yc [col] )
+
+trifill(	xa ya xb yb xc yc [col] )
+	Draws a triangle or filled triangle between the points xa;yb, xb;yb, and xc;yc.
+
+line(	xa ya xb yb [col] )
+	Draws a line between the points xa;ya and xb;yb.
+
+pset(	x y [col] )
+	Sets the color of the pixel at x;y.
+
+pget(	x y )
+	Returns the color of the pixel at x;y.
+
+
+-------------------------------
+	sprites
+- - - - - - - - - - - - - - - -
+
+	All the necessary functions for using spritesheets.
+	You can have multiple spritesheets and switch between them using the 'spritesheet' function.
+	The spritesheet surface is considered to be a grid of cells to pick from. The size of these cells is 8x8 by default, but that can be changed with 'sprgrid'.
+	'palt' lets you set which colors are to be considered transparent in the spritesheet. By default only the color 0 is transparent.
+
+
+spritesheet(	[surface_name] )
+	Uses the surface named [surface_name] as spritesheet.
+	The spritesheet surface needs to have been created before calling this function.
+	spritesheet() returns the name of the current spritesheet, or nil if none is set.
+
+sprgrid(	[tile_w tile_h] )
+	Sets the tile size to be used for drawing sprites.
+	sprgrid() to reset to 8x8 tiles.
+
+palt(	col [trsp] )
+	Sets whether the color 'col' should be considered transparent when drawing sprite.
+	If 'trsp' is true, the color 'col' will not be drawn when drawing sprites.
+	'trsp' defaults to false.
+
+sfillp(	[col ptrn col_pair] )
+	Sets a bicolor pattern used for drawing sprite pixels of the color 'col', using the color pair stored in 16 bit integer 'col_pair'.
+	'col_pair' should be col_b*256+col_a.
+	Please refer to fillp() for the 'ptrn' explanation.
+	sfillp() resets all colors' patterns.
+
+spr(	n x y [w h [flip_x flip_y]] )
+	Draws the n'th sprite in the spritesheet, on the target surface at x, y.
+	w and h define how many tiles should be drawn in width and height. They are 1,1 by default, drawing just one tile.
+	If flip_x is true, flips the sprite horizontally.
+	If flip_y is true, flips the sprite vertically.
+
+aspr(	n x y a [w h [scale_x scale_y [anchor_x anchor_y]]] )
+	Draws the n'th sprite in the spritesheet, on the target surface at x, y, rotated by a.
+	w and h define how many tiles should be drawn in width and height.
+	scale_x and scale_y default to 1,1 and scale the sprite horizontally and vertically before rotation.
+	anchor_x and anchor_y are pixel coordinates for the point in the sprite to rotate around. They default to the sprite's center.
+
+asspr(	sx sy sw sh dx dy a [scale_x scale_y [anchor_x anchor_y]] )
+	Draws the rectangle (sx sy sw sh) from the spritesheet to the target surface at dx,dy, rotated by a.
+	scale_x and scale_y default to 1,1 and scale the sprite horizontally and vertically before rotation.
+	anchor_x and anchor_y are pixel coordinates for the point in the sprite to rotate around. They default to the sprite's center.
+
+sspr(	sx sy sw sh dx dy [dw dh] )
+	Draws the rectangle (sx sy sw sh) from the spritesheet to the target surface at dx,dy, stretched to fit dw,dh.
+	dw,dh default to sw,sh.
+
+sset(	x y c )
+	Sets the color of the pixel at x,y in the spritesheet.
+
+sget(	x y )
+	Returns the color of the pixel at x,y in the spritesheet.
+
+
+-------------------------------
+	text
+- - - - - - - - - - - - - - - -
+
+	SUGAR provides a default font but lets you load more as well.
+
+
+newfnt(	data [name [mem_adr]] )
+newfnt(	data [mem_adr] )
+newfnt(	file_png chars [name [mem_adr]] )
+newfnt(	file_png chars [mem_adr] )
+newfnt(	file_ttf use_size name [mem_adr] )
+	Loads a font into SUGAR. If no name is given, the function generates one and returns it.
+	"data" should be a string made with the function 'expsrf'.
+	If using a file, make sure to use the complete filename, including the ".png". The file should hold all the glyphs lined up horizontally with one empty column of pixels between every pair. The last horizontal line serves to define glyph continuity, leave it empty if you don't understand how to use it.
+	If using a ttf font, set a use_size to define the size of characters. Typically this is the actual pixel height of the rendered characters, but it depends on the font.
+	If mem_adr is set, the font's data will be stored at that adress in the memory. If it isn't set, Sugar will find available space.
+
+delfnt(	name )
+	Deletes the font 'name' from memory.
+
+font(	[name] )
+	Sets the font to use for the next 'print' calls.
+	font() resets to the default font.
+
+expfnt( )
+	Returns formatted data for the font currently in use.
+	The result of this can be used in 'newfnt'.
+
+fntspec(	spec [arg] )
+	fntspec("name"): returns the current font's name.
+	fntspec("charcount"): returns the font's character count.
+	fntspec("dy", [arg]): get/set the vertical origin for the font's characters.
+	fntspec("h", [arg]): get/set the font's interline spacing for bprint().
+	fntspec("space", [arg]): get/set the space character's width for the font.
+
+strwidth(	str )
+	Returns how many pixels in width would the string str take if rendered with the current font.
+
+print(	str [x y [col]] )
+	If only the first parameter is provided, prints it on the console.
+	Otherwise, prints str on the target surface at x,y.
+
+bprint(	str x y w [col] )
+	Prints str on the target surface at x,y as a paragraph 'w' pixels wide.
+	Jumps lines with '\n' characters.
+
+
+-------------------------------
+	window
+- - - - - - - - - - - - - - - -
+
+	You'll need to create at least one window for your program.
+
+
+newwin(	name w h [scale [window_mode [screen_mode [mem_adr]]]] )
+newwin(	name w h scale window_mode screen_mode shader [mem_adr] )
+	Creates a new window named 'name'.
+	w,h is the resolution of the screen surface for the window. It will be magnified by 'scale'.
+	window_mode can be either of: resize, fullscreen, borderless, fixed. (default is resize)
+	screen_mode can be either of: stretch, intscale, scale, fixed, resize. (default is intscale)
+	If a shader's GLSL code or filepath is given as 'shader', will attempt to compile the shader and use it for the window.
+	If mem_adr is set, the window's screen data will be stored at that adress in the memory. If it isn't set, Sugar will find available space.
+
+delwin(	name )
+	Closes and deletes the 'name' window, frees its memory space.
+
+window(	name )
+	Targets the 'name' window for winspec and for drawing to screen.
+	The graphical function target() without arguments will target the current target window's screen.
+
+flip(	[window_name] )
+	Displays the screen's contents on the window.
+	If window_name isn't set, defaults to the current target window.
+	This is called automatically after your _draw function.
+
+winspec(	param [...] )
+	winspec("wmode") winspec("wmode", new_mode): get/set the window mode.
+	winspec("smode") winspec("smode", new_mode): get/set the screen mode.
+	winspec("screen") winspec("screen", w, h): get/set the screen's size.
+	winspec("title") winspec("title", new_title): get/set the title.
+	winspec("overlay") winspec("overlay", surface, trsp_key): get/set an overlay surface.
+	winspec("top") winspec("top", stay_on_top): get/set whether to stay on top of other windows.
+	winspec("trsp") winspec("trsp", col, make_trsp): get/set a transparent color.
+	winspec("lay") winspec("lay", x, y, w, h): get/set the window's position and size in desktop coordinates.
+	winspec("focus") winspec("focus", grab): get/set the whether window is in focus.
+	winspec("display"): get the display's desktop coordinates.
+	winspec("name"): get the window's name.
+	winspec("on_close", foo): set the function to be called on closing the window. the default function calls stop().
+
+
+-------------------------------
+	gif
+- - - - - - - - - - - - - - - -
+
+	You can create gifs directly from within Sugar using these functions.
+	You can preview the gif that is currently in memory using gifstream(...).
+
+
+newgif(	w h [max_frames [frame_time]] )
+	Starts a new gif of size 'w' x 'h'
+	The size and 'max_frames' define how much space is allocated for the new gif. If you ask for too many, this function may fail.
+	If you record more frames than 'max_frames', the first recorded frames will be overwritten with the new ones.
+	'frame_time' is the duration of each frame in the final gif. This is independant of the actual frame recording, you have to handle the timing of the recording yourself.
+	'max_frames' default to 240, for 8 seconds of gif if frame_time is 0.03.
+	'frame_time' defaults to 0.03, for 33 frames per second.
+	Returns false if the space could not be allocated, returns true otherwise.
+
+gifframe(	[x y] )
+	Records a gif frame from the target surface at x;y.
+	x and y both default to 0.
+
+endgif(	filename scale )
+	Produces a gif file at 'filename', zoomed-in 'scale' times.
+
+giflen( )
+	Returns the number of gif frames currently in memory.
+	Caps at the max_frames declared with newgif.
+	If the last newgif call failed, this function will always return 0.
+
+gifstream(	frame dx dy [dw dh [sx sy sw sh]] )
+	Blits a frame from the recorded gif onto the current target surface at the coordinates dx;dy.
+	Draw palette swaps do not affect this function.
+	If dw,dh are set, the gif frame will be drawn scaled down to that size.
+	If sx,sy,sw,sh are set, only the portion of the gif frame defined by those coordinates will be drawn.
+
+
+-------------------------------
+	shaders
+- - - - - - - - - - - - - - - -
+
+	You may have a single-pass post-processing shader on any one window. You will need to pass the shader's code in GLSL. Please refer to the file example.shader for an example of a valid shader. Uniform values 'screenData', 'palette', 'screenSize' and 'time' are filled in automatically.
+
+
+shader(	[code] )
+	Loads the string 'code' as GLSL code for a post-processing shader for the current window.
+	If the string 'code' ends in ".shader", then 'code' is taken to be a filename from which to load the actual GLSL code.
+	shader() removes any existing shader from the window, returning to default rendering.
+
+shdrf(	name value )
+shdrf(	name values )
+shdri(	name integer )
+shdri(	name integers )
+	Sets the value for the uniform variable 'name' inside the current window's shader.
+	If the second argument is a table, fills the uniform array 'name' inside the shader.
+	You are responsible for using the version corresponding to the actual type of the uniform in the shader.
+
+shdrf2(	name a b )
+shdrf2(	name values )
+shdrf3(	name a b c )
+shdrf3(	name values )
+shdrf4(	name a b c d )
+shdrf4(	name values )
+shdri2(	name a b )
+shdri2(	name values )
+shdri3(	name a b c )
+shdri3(	name values )
+shdri4(	name a b c d )
+shdri4(	name values )
+	Sets the values for the uniform vector (vec2, vec3, vec4) 'name' inside the shader.
+	If the second argument is a table, fills the uniform array of vectors 'name' inside the shader.
+	You are responsible for using the version corresponding to the actual type of the uniform in the shader.
+
+shdrsrf(	name surf )
+	Fills in the uniform usampler2D 'name' inside the shader with the data of the surface 'surf'.
+	'surf' should be the name of an existng surface.
+
+
+-------------------------------
+	banks
+- - - - - - - - - - - - - - - -
+
+	A bank is a 2D data structure with custom byte depth, meaning you can have either 1, 2 or 4 bytes per cell of the 2D grid. You can use all those bytes all at once or set and get them individually within each cell.
+	Banks are intended to be used to store maps and other data which may not quite fit in a surface.
+
+
+newbnk(	name w h [depth [mem_adr]] )
+newbnk(	name data [mem_adr] )
+	Creates a new bank.
+	depth defaults to 1.
+	data should be the output of expbnk(), or a filename ending in ".bnk" for a file containing a expbnk() output.
+	if mem_adr isn't set, free space is found in the memory for the new bank.
+
+delbnk(	[name] )
+	Deletes the bank 'name' or the current focused bank if no argument is given.
+
+expbnk(	[name] )
+	Exports the bank 'name' or the current bank as a string.
+	You may save the exported string to a ".bnk" file with the function file().
+		file("map.bnk", expbnk("map"))
+		newbnk("map2", "map.bnk") -- loads the map that was exported
+
+bank(	[name] )
+	If 'name' is specified, focuses on the bank with that name.
+	bank() returns the current bank's name.
+
+bnksize( )
+	Returns the width, the height, and the depth of the current bank.
+		w,h,depth = bnksize()
+
+bset(	x y v [byte] )
+bset(	name x y v [byte] )
+	Sets the value at x,y in the specified bank or in the current bank.
+	If byte is specified, only sets that one byte in the cell at x,y.
+		newbnk("eg",8,8,4) -- depth of 4 bytes
+		bset(3, 5, 8) -- writing 8 on all 4 bytes
+		bset(3, 5, 3, 1) -- writing 3 to the 2nd byte (byte number starts from 0)
+		-- the value is now 776 (0x 00 00 03 08)
+
+bget(	x y [byte] )
+bget(	name x y [byte] )
+	Returns the value at x,y in the specified bank or in the current bank.
+	If byte is specified, only returns the value of that one byte in the cell at x,y.
+		bset(3, 5, 0x0308)
+		print(bget(3, 5, 1))
+		-- prints 3, the value of the 2nd byte.
+
+
+-------------------------------
+	audio
+- - - - - - - - - - - - - - - -
+
+	SUGAR has 12 audio channels on which you can play music tracks and sound effects (sfx).
+	Load your sound effects with 'newsfx' and your music tracks with 'newmus', and play them with 'sfx' and 'music'.
+
+
+newsfx(	file [id [volume]] )
+newmus(	file [id [volume]] )
+	Loads a new sound effect (sfx) or music (mus) from file.
+	Only supports .WAV filetypes.
+	Returns the id on success, returns an empty string on failure.
+	If id isn't set, a new unused id is found and assigned to the sfx or music.
+	volume should be within 0-1 range and defaults to 1.
+
+delsfx(	id )
+delmus(	id )
+	Deletes the sound effect / music.
+
+sfxvol(	[v [sfx]] )
+	If sfxvol() is called with no argument, returns the current volume multiplier for sound effects.
+	Otherwise if sfx is set, sets the volume for that specific sfx to v.
+	If not, sets the volume multiplier for all sound effects to v.
+	If set, v should be within 0-1 range.
+
+musvol(	[v [mus]] )
+	If musvol() is called with no argument, returns the current volume multiplier for musics.
+	Otherwise if mus is set, sets the volume for that specific music to v.
+	If not, sets the volume multiplier for all musics to v.
+	If set, v should be within 0-1 range.
+
+sfxlen(	[id] )
+	Returns length of loaded sfx 'id' in seconds.
+
+muslen(	[id] )
+	Returns length of loaded music 'id' in seconds.
+
+sfx(	id [channel [volume [pan [pitch]]]] )
+	Plays the sound effect 'id' on 'channel' or on an available channel if 'channel' isn't set or is negative.
+	'volume' should be in the 0;1 range, defaults to 1.
+	'pan' should be in the -1;1 range (left;right), defaults to 0.
+	'pitch' is multiplicative, cannot be 0 or negative, defaults to 1.
+
+music(	[id [channel [loop [fade_time [sync_with [advance]]]]]] )
+	Plays the music 'id'  on 'channel' or on an available channel if 'channel' isn't set or is negative.
+	Set 'loop' to true to have the music start over after its end.
+	'fade_time' is a duration in seconds, during which to transition from the music that was playing previously, or silence, to the new music, or silence.
+	Set 'sync' to true to synchronize it with the previous music. Works only if the two track's durations are the same or one's is a multiple of the other's.
+	If 'sync_with' is set and positive, the music will start synchronizeded with whatever is playing on the 'sync_with' channel.
+	If 'sync_with' is -1, the music will start synchronized with whatever was previously playing on its channel.
+	If 'sync_with' is -2, the music will simply start from its beginning. 'sync_with' defaults to -2.
+	If 'advance' is set, plays the music from 'advance' seconds into the track.
+	Set 'id' to nil and 'fade_time' > 0 to fade out of the current music.
+
+nxtmusic(	id [channel [loop]] )
+	Sets a music to play after the current one ends on 'channel' or on the first channel that is playing music if 'channel' is not set or is negative.
+	Set loop to true to have this next music start over after its end.
+
+lockaudio( )
+	Arbitrarily locks the audio driver, pausing the thread it's working on.
+	Use this to make simultaneous changes on the audio channels before letting the driver read audio again.
+	Audio cannot play while it is locked. Make sure to call unlockaudio.
+
+unlockaudio( )
+	Unlocks the audio driver after a lockaudio() call.
+
+chnlfx(	channel param arg )
+chnlfx(	channels param arg )
+	Set a parameter for whatever is playing on 'channel' or on the channels in the table 'channels'.
+	Use the table varient if you want to affect multiple channels at once, so that they stay in sync, especially for the speed parameter.
+	chnlfx({a,b,c}, "volume", v): sets the volume of those channels to 'v'.
+	chnlfx({a,b,c}, "pan", v): sets the stereo pan to 'v'.
+	chnlfx({a,b,c}, "speed", v): sets the playback speed to 'v'. 'v' cannot be 0 or negstive.
+
+chnlprog(	channel )
+	Returns precisely how long a music or sfx has been playing on 'channel', in seconds.
+
+
+-------------------------------
+	input
+- - - - - - - - - - - - - - - -
+
+	You can set up your inputs with 'controls', and you can set up a a way for the user to rebind the controls, by using 'getinp' and 'defbtn'.
+
+
+quit( )
+	Quits SUGAR, closing all windows.
+
+controls(	[str [p_id]] )
+	If str isn't set, returns the current control scheme as a string.
+	If str is set, defines the controls for player p_id. (0 by default)
+	Your call to controls should look like this:
+	controls([[
+	  left > k:left, c:dpad:left
+	  right> k:right,c:dpad:right
+	  up   > k:up,   c:dpad:up
+	  down > k:down, c:dpad:down
+	  a    > k:z, k:c, c:a
+	  b    > k:x, c:b, c:x
+	]])
+	(please refer to 'input_codes' in manual.txt for input codes)
+
+defbtn(	btn_name p_id new_def )
+defbtn(	btn_name [p_id] )
+	If all 3 arguments are passed, (re)defines the button btn_name for player p_id, with the string of input codes new_def.
+	Otherwise, returns the current definition for btn_name, for player p_id. (0 by default)
+		defbtn("btn_X", 0, "k:x, c:x")
+		print(defbtn("btn_X"))
+		--> "k:x,c:x"
+
+inpnum(	input )
+	Returns a number that can be used to identify the given input.
+	'input' should be a string cantaining only a single input definition.
+		eg: num = inpnum("k:left")
+		    defbtn("left", "c:dpad:left, " .. num)
+
+btn(	id [p_id] )
+btnp(	id [p_id] )
+btnr(	id [p_id] )
+btnv(	id [p_id] )
+	All observe the button 'id' for player 'p_id'. (player 0 by default)
+	btn returns a boolean state. (true/false)
+	btnp (p for press) returns true only if the button started being active and wasn't during the last frame.
+	btnr (r for release) returns true only if the button stopped being active but was active during the last frame.
+	btnv returns the value for the button, useful for mouse coordinates and controller axes.
+	id must be the name of a button defined with 'controls' or 'defbtn'.
+	id CANNOT be a input code directly.
+
+btnclr(	[id [p_id]] )
+	Clears the state of the button 'id' for player 'p_id' for the rest of the current frame.
+	btnclr() clears all the buttons' states, for all players.
+
+getinp(	[foo] )
+	The function foo will be called on new inputs with their input code as parameter.
+	Useful for letting the user rebind the controls.
+	getinp() to reset, your function will not be called anymore.
+		function f(inp)
+		  print(inp)
+		end
+		getinp(f)
+
+txtinp(	[foo] )
+	The function foo will be called on text inputs, with the input as parameter, as a string.
+	txtinp() to reset, your function will not be called anymore.
+		function g(txt)
+		  print(txt)
+		end
+		txtinp(g)
+
+mouse(	param [...] )
+	mouse("lock", enable) mouse("lock"): set/get mouse position lock.
+	mouse("global", enable) mouse("global"): set/get global mode, mouse inputs react even when outside the window.
+	mouse("show", enable) mouse("show"): set/get whether the cursor should be visible.
+	mouse("setpos", x, y): set the mouse's position.
+
+ctrlr(	param [...] )
+	ctrlr("count"): returns how many controllers are connected.
+	ctrlr("list"): returns a table listing the connected controllers' indexes.
+	ctrlr("name", c_id): returns the name of the controller c_id.
+	ctrlr("type", c_id): returns the type of the controller c_id, can either be: Xbox360, XboxOne, PS3, PS4, PS5, SwitchPro, virtual, unknown, not connected
+	ctrlr("hasrumble", c_id): returns whether the controller c_id supports rumble.
+	ctrlr("which", p_id): returns the controller index assigned to player p_id.
+	ctrlr("assign", c_id, p_id): assigns controller c_id to player p_id.
+
+input_codes( )
+	This isn't a function, but rather an explainer of the input codes format.
+	A code denotes a precise input to listen for. These codes are used for 'controls', 'defbtn' and 'getinp'.
+	A code is always a string built out of a first particle, a second, and sometimes third, all separated by ':'. 
+	 
+	In the case of a keyboard key, the code must be "k:" and then one of these:
+	0 1 2 3 4 5 6 7 8 9
+	a b c d e f g h i j k l m n o p q r s t u v w x y z
+	down left right up
+	apostrophe backslash backspace capslock comma copy delete displayswitch eject end equals escape execute f1 f10 f11 f12 f13 f14 f15 f16 f17 f18 f19 f2 f20 f21 f22 f23 f24 f3 f4 f5 f6 f7 f8 f9 home insert lalt lctrl leftbracket lgui lshift pagedown pageup period ralt rctrl return return2 rgui rightbracket rshift semicolon separator slash space tab
+	ac_back ac_bookmarks ac_forward ac_home ac_refresh ac_search ac_stop again alterase application audiomute audionext audioplay audioprev audiostop brightnessdown brightnessup calculator cancel clear clearagain computer crsel currencysubunit currencyunit cut decimalseparator exsel find grave help kbdillumdown kbdillumtoggle kbdillumup mail mediaselect menu minus mode mute numlockclear oper out paste pause power printscreen prior scrolllock select sleep stop sysreq thousandsseparator undo unknown volumedown volumeup www
+	kp_0 kp_00 kp_000 kp_1 kp_2 kp_3 kp_4 kp_5 kp_6 kp_7 kp_8 kp_9 kp_a kp_ampersand kp_at kp_b kp_backspace kp_binary kp_c kp_clear kp_clearentry kp_colon kp_comma kp_d kp_dblampersand kp_dblverticalbar kp_decimal kp_divide kp_e kp_enter kp_equals kp_equalsas400 kp_exclam kp_f kp_greater kp_hash kp_hexadecimal kp_leftbrace kp_leftparen kp_less kp_memadd kp_memclear kp_memdivide kp_memmultiply kp_memrecall kp_memstore kp_memsubtract kp_minus kp_multiply kp_octal kp_percent kp_period kp_plus kp_plusminus kp_power kp_rightbrace kp_rightparen kp_space kp_tab kp_verticalbar kp_xor
+	 
+	In the case of a mouse input, the code must be "m:" and then one of these:
+	Positions    ->  x y dx dy
+	Buttons      ->  lb rb mb xb1 xb2
+	Scroll wheel ->  scroll:left scroll:right scroll:up scroll:down
+	
+	For controller inputs, the code must be "c:" and then one of these:
+	Buttons  ->  a b x y back guide start lstickb rstickb lshoulder rshoulder
+	D-pad    ->  dpad:up dpad:down dpad:left dpad:right
+	Triggers ->  ltrigger rtrigger 
+	Axes     ->  lstick:left lstick:right lstick:up lstick:down rstick:left rstick:right rstick:up rstick:down
+	
+	If you're viewing this in the console, sorry it's probably too long to fit the screen. We recommend finding "input_codes" in the manual.txt file instead.
+
+
+-------------------------------
+	maths
+- - - - - - - - - - - - - - - -
+
+	Those are the maths functions available in SUGAR.
+	For cos, sin and atan2, angles are turn-based, meaning the value 1 indicates a full turn, while 0.25 indicates a quarter turn (90 degrees or pi/2).
+
+
+cos(	a )
+	Returns the cosine of 'a' as a turn-based angle.
+
+sin(	a )
+	Returns the sine of 'a' as a turn-based angle.
+
+atan2(	dx dy )
+	Returns an angle-based angle from the vector dx, dy.
+
+twv(	x )
+	Returns y coordinate corresponding to x on triangle wave.
+		twv(0)    -> -1
+		twv(0.25) ->  0
+		twv(0.5)  -> +1
+		twv(0.75) ->  0
+		twv(1)    -> -1
+
+warp(	a b [c] )
+	Returns the circular difference between a and b with the smallest absolute value, considering c as a full circle unit.
+	If c isn't set, defaults to 1.
+		warp(1,9,10) -> -2
+
+dist(	x y [xb yb] )
+	If xb and yb are set, returns the distance between x, y and xb, yb.
+	Otherwise, returns the distance between 0,0 and x,y.
+
+sqrdist(	x y [xb yb] )
+	If xb and yb are set, returns the squared distance between x, y and xb, yb.
+	Otherwise, returns the squared distance between 0,0 and x,y.
+	This function is faster than dist.
+
+lerp(	a b i )
+	Returns the linear interpolation between a and b at i.
+		lerp(2, 6, 0)   -> 2
+		lerp(2, 6, 0.5) -> 4
+		lerp(2, 6, 1)   -> 6
+
+sqr(	a )
+	Returns a*a.
+
+cub(	a )
+	Returns a*a*a.
+
+pow(	a b )
+	Returns a to the power of b.
+	This function is considerably slower than sqr or cub.
+
+sqrt(	a )
+	Returns the square root of a.
+
+flr(	a )
+	Returns the closest integer below or equal to a.
+
+round(	a )
+	Returns the closest integer to a.
+
+ceil(	a )
+	Returns the closest integer above or equal to a.
+
+abs(	a )
+	Returns the absolute (positive) value of a.
+
+sgn(	a )
+	Returns -1 if a is negative, returns 1 if a is positive.
+
+min(	a b )
+	Returns the smaller value between a and b.
+
+max(	a b )
+	Returns the bigger value between a and b.
+
+mid(	a b c )
+	Returns the middle value between a and b and c.
+	mid(3,1,2) -> 2 because 1 < 2 < 3
+
+rnd(	a )
+	Returns a random number n where 0 <= n < a.
+
+irnd(	a )
+	Returns a random integer n where 0 <= n < a.
+
+srand(	[a] )
+	Sets the seed to 'a' for the random number generation, making it consistent.
+
+
+-------------------------------
+	memory
+- - - - - - - - - - - - - - - -
+
+	SUGAR lets you modify the memory that it uses at runtime. This memory is used for surface pixels and font glyphs, which will be visibly affected.
+	When creating new surfaces and fonts, you can either tell Sugar where to store them in the memory, or let Sugar automatically find some available space.
+	If you do use custom memory addresses, you can have the elements' data overlap, and so their memory will be shared and operations on one may affect the other.
+	If you don't use custom addresses, you can see what the automatic addresses are by checking the debug logs.
+
+
+wipe(	[v] )
+	Wipes memory, filling it with v.
+	v should be an integer within the 0 <= v < 256 range.
+	v defaults to 0.
+
+write(	adr data [halfbytes] )
+	Writes the string of hexadecimal numbers 'data' to memory at 'adr'.
+	'data' should be a continuous string of hexadecimal digits like this: "00019a4f6c88bb". Every pair of digits will define 1 byte in the memory...
+	...Unless halfbytes is set to true, in which case every digit will each define 1 byte.
+
+read(	adr len [halfbytes] )
+	Returns a string of hexadecimal digits representing 'len' bytes of the memory at 'adr'.
+	Each byte will be represented by a pair of digit, unless 'halfbytes' is set to true. Then each byte will be represented by a single digit, limited to 0-15 values instead of 0-255.
+
+memcpy(	dst src len )
+	Copies the values of 'len' bytes starting at the 'src' address, to the bytes starting at the 'adr' address.
+
+memset(	adr len v )
+	Sets 'len' bytes starting at 'adr' to the value 'v'.
+
+memsbs(	adr len replace with )
+memsbs(	adr len tbl )
+	Replaces all instances of 'replace' with 'with' within 'len' bytes starting from 'adr'.
+	If the 3rd argument is a table, it is taken to be a map of values to replace:
+		memsbs(0, 0x2000, {[0] = 3, [2] = 3})
+		-- will replace all instances of 0 and 2 with 3
+
+peek(	adr )
+peek2(	adr )
+peek4(	adr )
+	Returns the 8-bit / 16-bit / 32-bit value at 'adr' in the memory.
+
+poke(	adr v )
+poke2(	adr v )
+poke4(	adr v )
+	Sets the 1/2/4 bytes at 'adr' to 'v' as an 8-bit / 16-bit / 32-bit value.
+
+
+-------------------------------
+	steam
+- - - - - - - - - - - - - - - -
+
+	This category has only one function but it has many uses. The reason for this is to not bloat the API with Steam functionalities.
+
+
+steam(	[action [args]] )
+	steam() with no arguments returns whether Steam API was initialized successfully and is now available. You must call steam("init") before this can return true.
+	steam("init") attempts to initialize the Steam API. This will only succeed if the Steam app is running, the game has an appID, and you own a license for the app on your connected Steam account.
+	steam("set_achievement", achievement_id) gives the achievement to the connected steam account.
+	steam("clear_achievement", achievement_id) removes the achievement from the steam account.
+	steam("get_achievement", achievement_id) returns true if the steam account has the achievement.
+	steam("set_stat_int", stat_id, value) sets the value for an int Steam stat.
+	steam("set_stat_float", stat_id, value) sets the value for a float Steam stat.
+	steam("get_stat_int", stat_id, value) returns the value of an int Steam stat.
+	steam("set_stat_float", stat_id, value) returns the value of a float Steam stat.
+	steam("detect_overlay", foo) foo will be called whenever the Steam overlay is opened or closed, with a boolean parameter reflecting the new steam overlay status. 
+
+
+-------------------------------
+	discord
+- - - - - - - - - - - - - - - -
+
+	Only one function with several uses.
+
+
+discord(	[action [args]] )
+	discord() returns whether the Discord API was initialized successfully.
+	discord("init", app_id) attempts to initialize the Steam API. 'app_id' should be provided by Discord's developpers service, and should be given as a string.
+	discord("activity", params) sets elements of the discord user's presence for the keys present in the table 'params'. See example.
+		discord("activity", {
+		  app_id = "0123456789",
+		  type = "Playing",
+		  name = "my sugar game",
+		  details = "having fun",
+		  state = "going well so far",
+		  largeimg = "big_image",
+		  largetxt = "cool pop-up",
+		  start = "now"
+		}
+
+
+
+-------------------------------
+	Version Changelog
+- - - - - - - - - - - - - - - -
+
+v0.0.6b
+	Added: pref_path function, returns a platform-dependant preferred save folder.
+	Added: isfile and isfolder functions.
+	Added: rumble function.
+	Added: hasrumble and type spec getters for the ctrlr function.
+	Fixed: exports will now output code files' actual names in tracebacks.
+
+v0.0.6
+	Added: New parameters for the steam() function: set_stat_int, set_stat_float, get_stat_int, get_stat_float, and detect_overlay.
+	Changed: Updated SDL2, LuaJIT and Steamworks API to latest stable versions.
+	Changed: SUGAR now uses double floating point precision so as to match luajit's precision.
+	Fixed: Rare crash that occured consistently on launch on some systems if a gamepad was plugged in.
+
+v0.0.5e
+	Changed: mouse("setpos") now ineffective when mouse is set as non-global and window isn't focused.
+	Fixed: Mouse position offset when non-global on windowed windows
+
+v0.0.5d
+	Added: bit functions: band, bor, bxor, bnot, shl, shr, lshr, rotl, rotr
+	Changed: using newsrf(), newwin(), newbnk() or newfnt() with a name that is already taken will give a warning and delete the resource before continuing with the resource creation.
+	Changed: new format for game exports.
+	Changed: Mouse clicks will no longer be received if they are outside the window and mouse("global", true) wasn't called.
+	Changed: Mouse position no longer updates when the mouse leaves the window unless mouse("global", true) was called.
+	Changed: mouse() "global" parameter now allows mouse coordinates to go outside of window and getting mouse clicks even when window is out of focus.
+	Fixed: memsbs() with table parameter.
+
+v0.0.5c
+	Added: srfshot() overload to generate a picture of a set size.
+	Changed: Set default scale argument for newwin. (used to default automatically to 0, is now set to 2)
+	Changed: Window scale can now be a float value on newwin.
+	Changed: srfshot() scale can now be a float value.
+
+v0.0.5b
+	Added: Possibility to set a surface as overlay for window, independantly from the window's size and resolution, with a new winspec() specification.
+	Added: fntspec()
+	Added: can now manually set the width of the space character for a font, using fntspec()
+	Added: can now manually set the interline size used by bprint for a font, using fntspec()
+	Added: bprint() to print paragraphs with automatic linebreaks.
+	Changed: Removed fntinfo() and fntposy(), replaced by fntspec()
+	Fixed: Bad clipping on screen borders with ttf fonts
+
+v0.0.5
+	Added: ttf font support
+	Added: fntposy() to change a font's vertical positioning
+	Added: sfxlen() muslen()
+	Changed: print(str, x, y) now returns the updated x position after printing.
+	Changed: exported manual now uses parentheses in function definitions.
+	Fixed: Potential segfault when deleting surfaces and banks (oops)
+
+v0.0.4j
+	Added: new 'advance' parameter for music()
+	Fixed: aspr() applying camera twice when angle is 0.
+
+v0.0.4i
+	Added: asspr()
+	Fixed: Trifill breaking when two point are above clip's higher bound and the higher point is also the furthest right.
+	Fixed: Added missing coordinate security on bset and bget.
+	Fixed: chnlprog() not accounting for sample frequence.
+	Fixed: chnlprog() returning non-continuous values.
+
+v0.0.4h
+	Added: Arguments given to the SUGAR executable are now given over to the Lua state in global table EXE_ARGS
+	Added: syslang()
+	Fixed: Undefined tostr() and tonum()
+
+v0.0.4g
+	Fixed: Failure to start debug log.
+
+v0.0.4f
+	Changed: Crash logs now only get created on errors, and only in exports.
+	Fixed: folder() and url()
+
+v0.0.4e
+	Added: optional 'silent' parameter for ls().
+	Added: new file functions namefind() and rm().
+	Added: new debug function logdupe().
+	Added: optional 'full_bytes' and 'prefix' parameters for hex().
+	Added: new string functions find(), tostr(), tonum(), sbs(), match() and format().
+	Added: new lua functions getfenv() and setfenv().
+	Added: Sugar now logs what OS it's running on while booting up.
+	Added: musvol() variant to change the volume of a specific track.
+	Added: lockaudio() and unlockaudio().
+	Changed: Audio channels may now be paused by setting their speed to 0.
+	Fixed: chnlprog was giving time bit-shifted 32bits to the left.
+	Fixed: ltime and gtime so that the returned year and month are complete (used to be year-1900 and month-1).
+
+v0.0.4d
+	Added: inpnum() to convert an input definition string to an identifying number which can also be used as input definition in defbtn() and controls().
+	Fixed: Gif export could fail when recorded length was too long.
+	Fixed: Gif export failing randomly.
+
+v0.0.4c
+	Fixed: chnl_prog now returns 0 for channels that are not playing anything.
+	Fixed: Added safeguards around audio volume functions.
+	Fixed: Starting a new gif would print the frame_time in centisecondes.
+	Fixed: newsfx and newmus would not record the correct path for the export file.
+
+v0.0.4b
+	Added: rawset and rawget
+	Fixed: Console's usual first few lines not appearing.
+
+v0.0.4
+	Added: New audio system with 12 parallel channels!
+	Added: Channel parameter to sfx() and music().
+	Added: sfx() can now take volume, pan and pitch parameters.
+	Added: chnlfx() to change the parameters of whatever is playing on one or multiple channels.
+	Added: chnlprog() to know for how long a music or sfx has been playing on a channel.
+	Added: newmus() can now load the .mp3 format.
+	Added: New gif recording system!
+	Added: newgif, gifframe, endgif, giflen, gifstream
+	Added: desktop_path()
+	Added: Global variable IN_EXPORT is set to whether the code is being executed in an export or in the dev environment.
+	Added: Global table _G, containing all global variables and functions.
+	Added: setmetatable() and getmetatable()
+	Changed: music()'s fade_time parameter is now in seconds instead of milliseconds.
+	Changed: if sfx() is called but all channels are occupied, the one playing sfx that is closest to ending is replaced.
+	Changed: SUGAR's last used directory and load are now stored in a separate memory.sgr file.
+	Fixed: load() will now look for a .lua file even if a folder with the same name exists.
+	Fixed: Using newfnt with a .png will now function in exports.
+	Fixed: Unbalanced trifill() algorithm.
+	Fixed: Exports would crash instead of properly closing on quit().
+
+v0.0.3d
+	Changed: sfillp pattern are now aligned to destination rather than source.
+	Fixed: flipped sprite rendering on screen edges.
+
+v0.0.3c
+	Fixed: Shader surface support.
+	Fixed: Missing pixel on uppercase A in exports.
+
+v0.0.3b:
+	Changed: reversed changes to 'load' memory from 0.0.3
+
+v0.0.3a:
+	Fixed: Crash on using aspr.
+	Fixed: Audio glitching out on closing SUGAR.
+
+v0.0.3
+	Added: Discord rich presence integration!
+	Added: Can now fade out of playing music
+	Added: sfillp()
+	Added: btnclr()
+	Added: new optional paramater for clip(): can use camera offset
+	Added: shaders can now use additional surfaces!
+	Changed: steam and discord dlls are now automatically added to exports.
+	Changed: camera, clip, pal, mouse lock, and mouse show now reset on run().
+	Changed: queued music and music fade-in are now handled separately.
+	Changed: first line in generated export info file is not as specific anymore, allowing more flexibility.
+	Changed: 'load' calls from code won't be remembered by the console.
+	Changed: unfocusing a fullscreen window will no longer minimize it.
+	Fixed: Broken screen mode after turning off window shader.
+	Fixed: Calling newwin with 0 as width or height created a tiny window that could not be closed.
+	Fixed: Music glitching out when closing SUGAR.
+	Fixed: Window title sometimes getting lost when switching its shader on and off.
+
+v0.0.2k
+	Fixed: Crash on reset().
+
+v0.0.2j
+	Added: music() now stops any music.
+	Added: music fade in transition, optionally synchronized with previously playing music.
+	Added: nxtmusic to play a track after the current one ends.
+	Changed: mp3 type temporarily no longer supported.
+
+v0.0.2i
+	Fixed: broken file(filepath, content).
+	Fixed: cos(0) giving weird decimals.
+
+v0.0.2h
+	Added: Text files can now be included in exports.
+	Added: Can now make the export function copy files into the produced export folder.
+	Added: Can choose to ignore certain files for the export.
+	Added: Some Steam API bindings, including initialization and achievement setting, getting and clearing.
+	Changed: Export system now uses an editable "[project]_export_info" file to define what should be done with each file used by the project.
+	Fixed: print's lefthand out-of-screen sensibility.
+
+v0.0.2g
+	Changed: Improved stop functionnalities and error handling.
+	Fixed: Now using "desktop" fullscreen for windows created as fullscreen.
+
+v0.0.2f
+	Changed: (tmp) exports will check for .bnk files in their folder before looking to the data they contain themselves.
+	Changed: bget and bset calls specifying the wanted bank no longer call bank().
+	Fixed: flip level palette swaps not affecting shader rendering.
+	Fixed: console crashing on using left and up keys too much.
+	Fixed: Crash on export when couldn't find a .bnk file.
+
+v0.0.2e
+	Added: srfname()
+	Added: srfmem()
+	Changed: removed srfinfo()
+	Changed: srfsize() and srfmem() can take a surface name as parameter.
+	Changed: target(nil) gets the same behavior as target().
+	Changed: inversed stack traceback order on errors.
+	Changed: swapped srfshot() parameters, added an optional 'use_shader' parameter.
+
+v0.0.2d
+	Changed: errors now print the function stack traceback.
+	Changed: clarified wrong type error on all() calls.
+
+v0.0.2c
+	Added: srand() with no parameters now sets a random seed.
+	Changed: ls() now returns a table filled with the filenames that were found in the directory.
+	Fixed: Unbalanced line() algorithm.
+
+v0.0.2b
+	Added: bnksize
+	Added: All banks are deleted on SUGAR reset/reload.
+	Changed: New banks are now automatically cleared to 0.
+
+v0.0.2
+	Added: Post-processing shader support!
+	Added: Alternative parameter set for newwin with a shader parameter to create the window with the shader directly. In an export, the SUGAR boot-up animation will show with the shader.
+	Added: New data structure: bank!
+	Added: New function to substitute byte values for others, memsbs(...).
+	Changed: Changing the palette will update the brightest pixels in the console to the new brightest color in the new palette.
+
+v0.0.1c
+	Changed: using file(filename) with a file that is empty or doesn't exist now returns nil.
+	Fixed: mouse("setpos", x, y) using a wrong offset for the resulting mouse position.
+	Fixed: when using add() with three arguments, the last two were exchanged.
+	Fixed: using file(filename) with an inexistant file no longer produces an error.
+
+v0.0.1b
+	Added: k:anypress input code, to detect any key press even when the window is not in focus. (Windows only)
+	Added: show traceback on errors.
+	Added: changelog(), changelog(version), writing the changelog in mantxt().
+	Added: spritesheet() returns the name of the current spritesheet or nil if none is set.
+	Added: folder()
+	Changed: palette() now returns the colors of the palette in a table.
+	Changed: calling stop in the export will now close the program.
+	Changed: calling stop on a running program now also raises the console.
+	Fixed: palette("file.png") now properly supported in exports.
+	Fixed: errors on checking for remembered files when loading a project.
+	Fixed: spr rendering the wrong tile when flip_y was true.
+	Fixed: m:dx and m:dy inputs returning mouse positions instead of mouse deltas.
+	Fixed: errors on _init will now prevent the program to move on to the _update _draw cycle.
+	Fixed: crash on calling hex() with negative numbers.
+	Fixed: boot animation now restores the palette if it was set beforehand.
+
+v0.0.1
+	Added: mkdir
+	Changed: Proper export now! With created folder and packed resources (png, wav and mp3 files) and all.
+	Changed: Added "made with" text on the Sugar boot screen for exported projects.
+	Changed: Can now use decimals for spr's and aspr's w and h parameters.
+	Changed: Can now use log() with values other than strings and numbers, will print the value's type.
+	Fixed: Crash on syntax error when reloading.
+	Fixed: Crash on using sspr with coordinates outside the spritesheet.
+
+v0.0.0f
+	Added: Now saving the working directory for next launch.
+	Changed: Reworked the launcher icon.
+	Changed: Better garbage collection.
+	Fixed: Crash on syntax error when reloading.
+	Fixed: Correctly recognizing and remembering the load folder.
+	Fixed: Bad coordinates on a part of the boot animation.
+	Fixed: Clip area shifting print coordinates when on edge.
+	Fixed: Anchor parameters shifting aspr's draw area the wrong way.
+	Fixed: Mouse position breaking after resizing the window.
+
+v0.0.0e
+	Added: First very sketchy version of the export feature! \o/
+	Added: Set a default function for windows' on_close spec, which stops the program.
+	Fixed: Numbers should get truncated instead of rounded when an integer is demanded.
+
+v0.0.0d
+	Added: Sound effects are automatically shortened if they end in silence.
+	Added: Remembers the last loaded file and loads it automatically when running SUGAR.
+	Changed: Now optional to specify file type in some cases (.lua, .wav, .mp3)
+	Fixed: Loading audio files now properly check for files in the current project folder.
+
+v0.0.0c
+	Added: Audio functions!
+	Changed: Made all() and foreach() avoid some discontinuancy, when using del() or deli() while iterating.
+	Fixed: sin() was unintentionally inversed.
+	Fixed: Crash on closing the first window before the end of the boot sequence.
+
+v0.0.0b
+	Added: Now writes in the console when 'run' and 'stop' happen.
+	Changed: Renamed broken function 'do' to 'execute'.
+	Changed: You can now ctrl+R (calls 'run') from any window instead of just the console window.
+	Fixed: sspr: wrong operation on limiting blit size.
+
+v0.0.0
+	Added: Hello world! Lots to do here...
+
