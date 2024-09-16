@@ -127,20 +127,7 @@ add_content(EXCLUDE, {
 
 
 
---[[ This is the complete vanilla set of pieces and cards:
-
-PIECES={
-	{type=0, name="pawn", 		hp=3, tempo=5, danger=1, seek="wdist" },
-	{type=1, name="knight", 	hp=3, tempo=3, danger=3, seek="kdist", nocarry=1 },
-	{type=2, name="bishop", 	hp=4, tempo=3, danger=3, seek="bdist" },
-	{type=3, name="rook", 		hp=5, tempo=4, danger=6, seek="rdist", nocarry=1 },	
-	{type=4, name="queen", 		hp=5, tempo=4, danger=9, seek="qdist" },
-	{type=5, name="king", 		hp=8, tempo=4, danger=6, seek="wdist" },
-	{type=6, name="boss", 		hp=24, tempo=3, danger=16, big=true, seek="wdist", nocarry=1 }, 
-	{type=7, name="all", 		 	}, 
-	{type=8, name="leader", 	},
-	{type=9, name="cannonball", 	hp=99, tempo=4, seek="wdist", inert=true, freelift=1, nocarry=1 },
-}
+--[[ This is the complete vanilla sets of cards and pieces:
 
 CARDS={
 	{ gid=0, n=3, id="Ermine Belt", 				ammo_max=3 },
@@ -264,12 +251,76 @@ CARDS={
 }
 
 EXCLUDE={
-	{"Throne Room","Theocracy"},
-	{"Ritual Dagger","Theocracy"},
-	{"Royal Loafers","Unjust Decree","Kingly Alms","Engraved Scope"},
 	{"Royal Loafers","Sawed-off Justice"},
 	{"Militia","Bloodless Coups"},
 	{"Guillotine","The Secret Heir"},
+	{"The Red Book","The Royal Hunt"},
+	{"The Red Book","Buckler of Limos"},
+}
+
+PIECES={
+	{ type=0, name="pawn", 		hp=3, tempo=5, 
+		behavior={
+			{ id="line",1,1,1,  move=1 },
+			{ id="line",4,5,1,  atk=1 },			
+		},
+		danger=1, seek="wdist", hdy=2, 
+	},
+	{ type=1, name="knight", 	hp=3, tempo=3, 
+		behavior={
+			{ id="jump", move=1, atk=1, 2,-1,2,1, 1,2,-1,2, -2,-1,-2,1, -1,-2,1,-2 }
+		},
+		danger=3, seek="kdist", hdy=1, nocarry=1 
+	},
+	{ type=2, name="bishop", 	hp=4, tempo=3,
+		behavior={
+			{ id="line",4,7,8,  move=1, atk=1 },
+		},
+		danger=3, seek="bdist", hdy=0 
+	},
+	{ type=3, name="rook", 		hp=5, tempo=4,
+		behavior={
+			{ id="line",0,3,8,  move=1, atk=1 },
+		},
+		danger=6, seek="rdist", hdy=1, nocarry=1
+	},	
+	{ type=4, name="queen", 	hp=5, tempo=4,
+		behavior={
+			{ id="line",0,7,8,  move=1, atk=1 },
+		},
+		danger=9, seek="qdist", hdy=0
+	},
+	{ type=5, name="king", 		hp=8, tempo=4,
+		behavior={
+			{ id="line",0,7,1,  move=1, atk=1 },
+		},
+		danger=6, seek="wdist", hdy=0 
+	},
+	{ type=6, name="boss", 		hp=24, tempo=3, boss=1,
+		behavior={
+			{ id="line",0,3,1,  move=1, },
+			{ id="jump",2,0,2,1, 0,2,1,2, -1,0,-1,1,  0,-1,1,-1,  atk=1, fatality="eat" },
+		},
+		danger=16, big=true, seek="wdist", hdy=-24, nocarry=1,
+	},  -- was 24
+	{ type=7, name="all", 		}, 
+	{ type=8, name="leader", 	},
+	{ type=9, name="cannonball", 	hp=99, tempo=4,
+		behavior={},
+		seek="wdist", hdy=0, inert=true, freelift=1, nocarry=1, knockback=100, 
+	},
+	{ type=10, name="queen mother", hp=30, tempo=4,
+		behavior={
+			{ id="line",0,7,8,  move=1, atk=1 },
+		},
+		danger=16, seek="qdist", hdy=0, boss=1, unlift=1 
+	},
+	{ type=11, name="horseman", 	hp=12, tempo=4,
+		behavior={
+			{ id="jump", move=1, atk=1, 2,-1,2,1, 1,2,-1,2, -2,-1,-2,1, -1,-2,1,-2 }
+		},
+		danger=9, seek="kdist", hdy=0, team_boss=1, soul_fx=1, unlift=1
+	},
 }
 
 --]]
