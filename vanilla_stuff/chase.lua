@@ -4,8 +4,11 @@ ban={
 	"Egotic Maelstrom",
 	"Undercover Mission",
 	"Unholy Call",
-	"Imperial Shot Put", -- TODO
-	"Welcome Gift", -- TODO
+	"Imperial Shot Put",
+
+	"The Mole",
+	"Bold Plan",
+	"Patience",	
 }
 
 setup={
@@ -13,17 +16,14 @@ setup={
 }
 base={
 	chamber_max=2, firepower=4, firerange=3, spread=55, ammo_max=5, 
-	ammo_regen=1, king_hp=-2, militia=1
+	ammo_regen=1, king_hp=-2, pawn_militia=1,
 }
 
 proba={0,0,0,0,1,1,2,2,3,3,4}
 pieces_danger={1,3,3,6,9,0}
 fill_last_slot=true
 turns=0
-
-function initialize()
-	newbnk(128,64,4)
-end
+recycle_down=1
 
 function start()
 	init_game()
@@ -47,26 +47,6 @@ function start()
 
 end
 
-
-
-function on_king_death()
-
-	--[[
-	local data={
-		id="level_up", 
-		pan_xm=3,
-		pan_ym=1, 
-		pan_width=128,
-		pan_height=64,
-		choices={
-			{{team=0}},{{team=0}},{{team=0}},
-		},
-	}
-
-	add_event(bind(level_up,data,new_turn))
-	
-	--]]
-end
 function get_slot_data(team,i)
 	if team==1 or i>4 then return nil end
 
@@ -81,11 +61,11 @@ end
 
 -- ON
 function on_hero_death()
-	bank()
+	bank("save")
 	if score > bget(0,3) then bset(0,3,score) end
 	if mode.turns > bget(1,3) then bset(1,3,mode.turns) end
-	savbnk()
 	
+	save()
 	gameover()
 end
 function on_new_turn()
@@ -143,7 +123,10 @@ function on_bad_death(e)
 				{{team=0}},{{team=0}},{{team=0}},
 			},
 		}
-		add_event(bind(level_up,data,new_turn))
+		
+
+		
+		add_event(bind(level_up,data,continue_run))
 	end
 
 
@@ -162,6 +145,15 @@ function on_bad_death(e)
 
 end
 
+function continue_run()
+	hero.win=nil
+	hero.first_reload=nil
+	new_turn()
+	--clean_up(new_turn)
+end
+
+
+
 function get_start_square()
 	return gsq(3+irnd(2),3+irnd(2))
 end
@@ -174,3 +166,10 @@ function draw_inter()
 	lprint(score,x,board_y-19,5)
 end
 
+
+
+-- NEED SOLVE
+-- cards with sacrifice or adding piece
+-- can't use wand/grenade the turn I get them
+
+-- ? 1+ mist ?

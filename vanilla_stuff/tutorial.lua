@@ -4,7 +4,7 @@ id="tutorial"
 base={
 	chamber_max=1, firepower=4, firerange=3, spread=55, ammo_max=6,
 	--chamber_max=0, firepower=0, firerange=0, spread=0, ammo_max=0,
-	promotion=1, soul_slot=-1, bishop_tempo=-1, rook_tempo=-1, queen_tempo=1, queen_hp=-1, king_hp=-2,
+	pawn_promote=1, soul_slot=-1, bishop_tempo=-1, rook_tempo=-1, queen_tempo=1, queen_hp=-1, king_hp=-2,
 	gain={}
 }
 local pan_contents = {
@@ -27,7 +27,7 @@ local pan_contents = {
 	[4] = {
 		chess={{piece=1},{text="chess_tuto_4"}},
 		ctrl={
-			{text="ctrl_tuto_4_1"},	{but="info"},
+			{text="ctrl_tuto_4_1"},	{stick="rightStick", stick2="leftStick"},
 			{text="ctrl_tuto_4_2"}, {but="pause"}
 		}
 	},
@@ -177,11 +177,13 @@ function start()
 	if mode.start_from_menu then
 		mode.lvl=START_LVL or 0
 		mode.start_from_menu=false
+		--if DEV then mode.lvl=1 end
 	else
 		mode.lvl=4
 		mode.skip_dialogue_5=true
 		add_card(new_card("Extra Barrel"))
 		add_card(new_card("Homecoming"))
+
 	end
 	next_floor()
 	
@@ -231,8 +233,14 @@ function on_empty()
 		return true
 	end
 	if mode.lvl == 5 then
+		bset(0,6,1)
+		save()
 		init_vig({2,3},bind(init_menu, true))
 		return
+	end
+	
+	if #events > 0 then
+		return true
 	end
 
 	trigger_end()
@@ -277,7 +285,7 @@ function trigger_end()
 end
 
 function move_ally(nxt) 
-	local a=get_move_range(ally_bishop)
+	local a=get_range(ally_bishop)
 
 	-- SORT
 	local function side(sq)
@@ -348,6 +356,10 @@ function draw_inter()
 	end
 
 	spritesheet("gfx")
+	
+	if mode.lvl<4 then
+		rov = nil
+	end
 end
 
 -- Tuto 1: movement
@@ -410,15 +422,25 @@ function mk_shotgun_pickup()
 	shotgun_pickup.dp=DP_TOP
 	shotgun_pickup.x=board.x+12
 	shotgun_pickup.y=board.y+10+16
-
+	shotgun_pickup.child_invis=true
 	shotgun_pickup.dr=function(e,x,y)
 		if e.anim_pickup then
 			if e.t < 170 then
-				circfill(x+12,y+4-e.t/17,15*e.t/170,round(e.t/8)%4+4)
+				circfill(x+12,y+4-e.t/17,15*e.t/170,4+cyc(2,8))
 				spritesheet("gfx")
 				sspr(112,0,24,8,x,y-e.t/17)
 			else
-				local offy=4-10
+
+				-- RAY
+				tcamera(-x,-y)
+				e.back=1
+				foreach(e.ents or {},dre)
+				e.back=nil
+				foreach(e.ents or {},dre)
+				tcamera(x,y)
+
+				--[[ NO MORE PINKS = NEW FX
+
 				local nb=8
 				local da=1/nb/4
 				for i=1,nb do
@@ -428,19 +450,27 @@ function mk_shotgun_pickup()
 					
 					if i%2==1 then spin=spin*-1 end
 					
+					--
 					local	ax=x+cos(an+da+spin)*MCW
 					local	ay=y+sin(an+da+spin)*MCW
 					local	bx=x+cos(an-da+spin)*MCW
 					local	by=y+sin(an-da+spin)*MCW
-				
-					local cl=i%4+4
-					
+					local cl=i%4+4					
 					trifill(x+12,y+offy,ax+12,ay+offy,bx+12,by+offy,cl)
 				end
-				circfill(x+12,y+offy,20-cos(e.t/60)*5,5)
+				--]]
+				
+				for i=0,1 do
+					if i==0 then fillp_dissolve(.5) end
+					circfill(x+12,y-6,20+(1-i)*8-cos(e.t/60)*5,5)
+					fillp()
+				end
 				
 				spritesheet("gfx")
 				sspr(112,0,24,8,x,y-10)
+				
+				
+				
 			end
 		else
 			spritesheet("gfx")
@@ -453,8 +483,52 @@ function ev_shotgun()
 	shotgun_pickup.anim_pickup = true
 	shotgun_pickup.t = 0
 	music("level_up_A")
-	shotgun_pickup.upd=function()
+	shotgun_pickup.upd=function(e)
+		
+		if e.t%8==0 and e.t>170 then
+			local ray=mke(0,12,-6)
+			add_child(e,ray)
+			ray.a=rnd(1)
+			ray.va=0.005
+			ray.life=60+irnd(60)
+			ray.cl=4+irnd(2)
+			ray.upd=function(e)
+				e.a=e.a+e.va
+			end
+			ray.dr=function(e,x,y)		
+			
+				local c=1
+				if e.t<30 then c=e.t/30 end
+				if e.life<30 then c=e.life/30 end
+			
+				local ex=x+cos(e.a)*MCW
+				local ey=y+sin(e.a)*MCW
+
+
+				local ra=.02*c		
+				local cl=ray.cl
+				if e.par.back then
+					cl=5
+					ra=ra*2
+					fillp_dissolve(.5)
+				end
+				
+				local ax=x+cos(e.a-ra)*MCW
+				local ay=y+sin(e.a-ra)*MCW
+				local bx=x+cos(e.a+ra)*MCW
+				local by=y+sin(e.a+ra)*MCW
+				trifill(ax,ay,bx,by,x,y,cl)
+				fillp_dissolve()
+				
+			end
+			--del(ents,ray)
+			--add(e,ray)
+		
+		end
+		for ray in all(e) do upe(ray)	end
+		
 		if btnp("validate") and shotgun_pickup.t > 170 then
+
 			mode.no_shotgun=false
 			sfx("level_up_sel")
 			music("codex")
@@ -468,10 +542,11 @@ end
 -- Basic events
 function ev_end()
 	trigger_end()
-	event_nxt()
+	--event_nxt()
 end
 
 function ev_reset_gameplay()
+	remove_buts() -- needed or tuto crash when player click
 	mode.in_cine = false
 	hero.force_ang=nil
 	reset_mode()
@@ -621,7 +696,8 @@ function content_tuto_panel(e, x, pY)
 			elseif content.piece then
 				pY=pY+2
 				spr(16+content.piece,x-20,pY)
-				sspr(24*content.piece,104,23,23,x-20+16,pY-4)
+				rectfill(x,pY-4,x+24,pY+20,1)
+				dr_movemap(PIECES[content.piece+1],x,pY-4)
 				pY=pY+20
 			elseif content.line then
 				line(x-20,pY,x+20,pY,2)
@@ -659,7 +735,16 @@ function content_tuto_panel(e, x, pY)
 				if MOUSE then
 					pY = pY + draw_stick("cursor", x-4, pY+1, true)
 				else
-					pY = pY + draw_stick(content.stick, x-7, pY, true)
+					if content.stick2 then
+						local fnt = font()
+						font("pico")
+						print("û", x-4, pY+2, 3)
+						font(fnt)
+						draw_stick(content.stick, x-7-12, pY, true)
+						pY = pY + draw_stick(content.stick2, x-7+12, pY, true)
+					else
+						pY = pY + draw_stick(content.stick, x-7, pY, true)
+					end
 				end
 			end
 			pY = pY + 2

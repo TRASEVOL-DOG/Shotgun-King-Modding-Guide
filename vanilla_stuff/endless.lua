@@ -4,14 +4,9 @@ setup={
 }
 base={
 	chamber_max=2, firepower=4, firerange=3, spread=55, ammo_max=5,
-	promotion=1, surrender=1,
+	pawn_promote=1, surrender=1,
 	gain={3,0,0,0,1,5,2,0}
 }
-
-function initialize()
-	newbnk(128,64,4)
-end
-
 function start()
 	init_game()
 	mode.lvl=0
@@ -20,18 +15,17 @@ function start()
 end
 function next_floor()
 	mode.lvl=mode.lvl+1
-	new_level()	
+	new_level()
 end
 function on_empty()
 	end_level(grow)		
 end
-function on_hero_death()	
-	bank()
+function on_hero_death()
+	bank("save")
 	if mode.lvl > bget(0,2) then
 		bset(0,2,mode.lvl)
 	end
-	savbnk()
-	
+	save()
 	gameover()	
 end
 
